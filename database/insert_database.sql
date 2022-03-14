@@ -13,6 +13,7 @@ INSERT INTO user_role(user_id,role_id) VALUES (1,1);
 INSERT INTO user_role(user_id,role_id) VALUES (2,2);
 INSERT INTO user_role(user_id,role_id) VALUES (3,2);
 INSERT INTO user_role(user_id,role_id) VALUES (4,2);
+INSERT INTO user_role(user_id,role_id) VALUES (5,2);
 
 INSERT INTO buildings(name, number_of_basement, district_code, building_types, street, ward, structure, floor_area, direction, level, rent_price, rent_price_description, service_fee, car_fee, motobike_fee, overtime_fee, water_fee, electricity_fee, deposit, payment, rent_time, decoration_time, brokerage_fee, note, link_of_building, map, image_url, manager_phone, manager_name, rent_area_description) VALUES
 ('Nam Giao Building Tower', 3, 'Q1', 'TANG_TRET,NGUYEN_CAN', '59 Phan Xích Long', 'Phường 1', 'To', 300, 'Hướng nam', 'A', 300, '300 triệu/tháng', 10, 20, 10, 50, 10, 10, 100, 'Thanh toán', '20/10/2020', '20/11/2020', 30, 'Toà nhà hạng A', 'link', 'map', 'default-image.jpg', '0335466', 'Nguyễn Văn Tài', '100m2, 200m2, 300m2' ),
