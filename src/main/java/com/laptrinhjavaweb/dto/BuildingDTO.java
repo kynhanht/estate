@@ -1,6 +1,5 @@
 package com.laptrinhjavaweb.dto;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.Serializable;

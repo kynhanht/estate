@@ -2,9 +2,8 @@ package com.laptrinhjavaweb.entity;
 
 
 import javax.persistence.*;
-import java.util.*;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "buildings")

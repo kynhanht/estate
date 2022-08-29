@@ -1,7 +1,6 @@
 package com.laptrinhjavaweb.specifications;
 
 import com.laptrinhjavaweb.entity.*;
-import org.apache.commons.lang.StringUtils;
 import org.springframework.data.jpa.domain.Specification;
 
 import javax.persistence.criteria.*;

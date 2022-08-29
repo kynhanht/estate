@@ -1,7 +1,5 @@
 package com.laptrinhjavaweb.dto.request;
 
-import java.io.Serializable;
-
 public class CustomerSearchRequest extends PaginationRequest {
 
     private String fullName;

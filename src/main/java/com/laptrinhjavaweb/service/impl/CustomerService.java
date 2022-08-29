@@ -1,6 +1,5 @@
 package com.laptrinhjavaweb.service.impl;
 
-import com.laptrinhjavaweb.builder.CustomerSearchBuilder;
 import com.laptrinhjavaweb.constant.ErrorMessageConstants;
 import com.laptrinhjavaweb.constant.SystemConstants;
 import com.laptrinhjavaweb.converter.CustomerConveter;
@@ -11,15 +10,12 @@ import com.laptrinhjavaweb.dto.respone.CustomerSearchResponse;
 import com.laptrinhjavaweb.dto.respone.PaginationResponse;
 import com.laptrinhjavaweb.entity.CustomerEntity;
 import com.laptrinhjavaweb.entity.CustomerEntity_;
-import com.laptrinhjavaweb.entity.UserEntity;
 import com.laptrinhjavaweb.enums.SearchOperationEnum;
 import com.laptrinhjavaweb.exception.NotFoundException;
-import com.laptrinhjavaweb.exception.handler.ErrorMessage;
 import com.laptrinhjavaweb.repository.CustomerRepository;
 import com.laptrinhjavaweb.repository.UserRepository;
 import com.laptrinhjavaweb.service.ICustomerService;
 import com.laptrinhjavaweb.specifications.CustomerSpecification;
-import com.laptrinhjavaweb.specifications.GenericSpecification;
 import com.laptrinhjavaweb.specifications.SearchCriteria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

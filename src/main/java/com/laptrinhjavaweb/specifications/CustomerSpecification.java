@@ -1,6 +1,9 @@
 package com.laptrinhjavaweb.specifications;
 
-import com.laptrinhjavaweb.entity.*;
+import com.laptrinhjavaweb.entity.CustomerEntity;
+import com.laptrinhjavaweb.entity.CustomerEntity_;
+import com.laptrinhjavaweb.entity.UserEntity;
+import com.laptrinhjavaweb.entity.UserEntity_;
 import org.springframework.data.jpa.domain.Specification;
 
 import javax.persistence.criteria.Join;

@@ -1,7 +1,6 @@
 package com.laptrinhjavaweb.api.admin;
 
 import com.laptrinhjavaweb.dto.CustomerDTO;
-import com.laptrinhjavaweb.dto.UserDTO;
 import com.laptrinhjavaweb.dto.request.AssignmentCustomerRequest;
 import com.laptrinhjavaweb.dto.respone.StaffResponse;
 import com.laptrinhjavaweb.service.ICustomerService;

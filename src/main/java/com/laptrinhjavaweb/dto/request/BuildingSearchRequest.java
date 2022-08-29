@@ -1,6 +1,5 @@
 package com.laptrinhjavaweb.dto.request;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 

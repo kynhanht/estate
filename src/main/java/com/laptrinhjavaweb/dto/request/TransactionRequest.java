@@ -1,7 +1,5 @@
 package com.laptrinhjavaweb.dto.request;
 
-import java.io.Serializable;
-
 public class TransactionRequest extends PaginationRequest {
 
     private String code;

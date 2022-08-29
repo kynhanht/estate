@@ -5,7 +5,6 @@ import com.laptrinhjavaweb.dto.request.AssignmentBuildingRequest;
 import com.laptrinhjavaweb.dto.request.BuildingSearchRequest;
 import com.laptrinhjavaweb.dto.respone.BuildingSearchResponse;
 import com.laptrinhjavaweb.dto.respone.PaginationResponse;
-import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 

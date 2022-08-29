@@ -1,6 +1,5 @@
 package com.laptrinhjavaweb.api.admin;
 
-import com.laptrinhjavaweb.constant.SystemConstants;
 import com.laptrinhjavaweb.dto.UserDTO;
 import com.laptrinhjavaweb.dto.request.PasswordRequest;
 import com.laptrinhjavaweb.service.IUserService;

@@ -1,11 +1,8 @@
 package com.laptrinhjavaweb.converter;
 
 import com.laptrinhjavaweb.dto.UserDTO;
-import com.laptrinhjavaweb.dto.respone.BuildingSearchResponse;
 import com.laptrinhjavaweb.dto.respone.UserSearchResponse;
-import com.laptrinhjavaweb.entity.BuildingEntity;
 import com.laptrinhjavaweb.entity.UserEntity;
-import com.laptrinhjavaweb.utils.SystemUtils;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
