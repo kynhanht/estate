@@ -190,11 +190,13 @@
                                        export="true"
                                        class="table table-fcv-ace table-striped table-bordered table-hover dataTable no-footer"
                                        style="margin: 3em 0 1.5em;">
-
+                            <display:caption media="html">
+                                <strong>Danh sách các toà nhà</strong>
+                            </display:caption>
                             <display:column title="<fieldset class='form-group'>
 												        <input type='checkbox' id='checkAll' class='check-box-element'>
-												        </fieldset>" class="center select-cell export-wthtml"
-                                            headerClass="center select-cell export-wthtml" >
+												        </fieldset>" class="center select-cell"
+                                            headerClass="center select-cell" media="html">
                                 <fieldset>
                                     <input type="checkbox" name="checkList" value="${tableList.id}"
                                            id="checkbox_${tableList.id}" class="check-box-element"/>
@@ -207,7 +209,7 @@
                             <display:column headerClass="text-left" property="managerPhone" title="Số điện thoại" sortName="managerPhone" sortable="true"/>
                             <display:column headerClass="text-left" property="floorArea" title="Giá Thuê" sortName="floorArea" sortable="true"/>
                             <display:column headerClass="text-left" property="rentPrice" title="Phí dịch vụ" sortName="rentPrice" sortable="true"/>
-                            <display:column headerClass="col-actions" title="Thao tác">
+                            <display:column headerClass="col-actions" title="Thao tác" media="html">
                                 <security:authorize access="hasRole('MANAGER')">
                                     <button class="btn btn-xs btn-info" title="Giao toà nhà"
                                             onclick="openAssignBuildingModal(${tableList.id})">
@@ -349,12 +351,12 @@
             contentType: "application/json",
             success: function (res) {
                 showAlertAfterDeleteSuccess(function () {
-                    window.location.href = "<c:url value='/admin/building-list?message=delete_success'/>";
+                    window.location.href = "/admin/building-list";
                 });
             },
             error: function (res) {
                 showAlertAfterFail(function () {
-                    window.location.href = "<c:url value='/admin/building-list?message=error_system'/>";
+                    window.location.href = "/admin/building-list";
                 });
             }
         });

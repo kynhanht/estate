@@ -9,7 +9,7 @@
         <li class="">
             <a href="#" class="dropdown-toggle">
                 <i class="menu-icon fa fa-users"></i>
-                <span class="menu-text">QL tài khoản</span>
+                <span class="menu-text">Quản lý tài khoản</span>
                 <b class="arrow fa fa-angle-down"></b>
             </a>
             <b class="arrow"></b>
@@ -17,7 +17,14 @@
                 <li class="">
                     <a href='<c:url value='/admin/user-list'/>'>
                         <i class="menu-icon fa fa-caret-right"></i>
-                        DS tài khoản
+                        Danh sách tài khoản
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+                <li class="">
+                    <a href='<c:url value='/admin/user-edit'/>'>
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Thêm mới tài khoản
                     </a>
                     <b class="arrow"></b>
                 </li>
@@ -34,7 +41,14 @@
                 <li class="">
                     <a href='<c:url value='/admin/building-list'/>'>
                         <i class="menu-icon fa fa-caret-right"></i>
-                        DS toà nhà
+                        Danh sách toà nhà
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+                <li class="">
+                    <a href='<c:url value='/admin/building-edit'/>'>
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Thêm mới toà nhà
                     </a>
                     <b class="arrow"></b>
                 </li>
@@ -51,7 +65,14 @@
                 <li class="">
                     <a href='<c:url value='/admin/customer-list'/>'>
                         <i class="menu-icon fa fa-caret-right"></i>
-                        DS khách hàng
+                        Danh sách khách hàng
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+                <li class="">
+                    <a href='<c:url value='/admin/customer-edit'/>'>
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Thêm mới khách hàng
                     </a>
                     <b class="arrow"></b>
                 </li>

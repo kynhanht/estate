@@ -4,7 +4,6 @@
 <html>
 <head>
 	<title><dec:title default="Trang chủ" /></title>
-
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="font-awesome/4.5.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
@@ -68,7 +67,7 @@
             swal({
                 title: "Xác nhận xóa",
                 text: "Bạn có chắc chắn xóa những dòng đã chọn",
-                type: "warning",
+                type: "question",
                 showConfirmButton: true,
                 showCancelButton: true,
                 confirmButtonText: "Xác nhận",

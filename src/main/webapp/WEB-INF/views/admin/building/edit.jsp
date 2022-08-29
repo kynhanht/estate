@@ -385,7 +385,7 @@
         }
         // Cancel building
         $("#cancelBuildingBtn").click(function () {
-            window.location.href = "/admin/building-list?message=add_cancel"
+            window.location.href = "/admin/building-list"
         });
 
         $("#image").change(function () {

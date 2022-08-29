@@ -198,12 +198,12 @@
             data: JSON.stringify(data),
             success: function (res) {
                 showAlertAfterDeleteSuccess(function () {
-                    window.location.href = "<c:url value='/admin/user-list?message=delete_success'/>";
+                    window.location.href = "/admin/user-list";
                 });
             },
             error: function (res) {
                 showAlertAfterFail(function () {
-                    window.location.href = "<c:url value='/admin/user-list?message=error_system'/>";
+                    window.location.href = "/admin/user-list";
                 })
             }
         });

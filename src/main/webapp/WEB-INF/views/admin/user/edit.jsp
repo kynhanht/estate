@@ -117,13 +117,13 @@
             success: function (res) {
                 showAlertAfterCreateSuccess(function () {
                     $('#loading_image').hide();
-                    window.location.href = "<c:url value='/admin/user-edit-"+res.id+"?message=insert_success'/>";
+                    window.location.href = "/admin/user-edit-" + res.id;
                 });
             },
             error: function (res) {
                 showAlertAfterFail(function () {
                     $('#loading_image').hide();
-                    window.location.href = "<c:url value='/admin/user-edit-"+res.id+"?message=error_system'/>";
+                    window.location.href = "/admin/user-edit";
                 });
             }
         });
@@ -147,13 +147,13 @@
             success: function (res) {
                 showAlertAfterUpdateSuccess(function () {
                     $('#loading_image').hide();
-                    window.location.href = "<c:url value='/admin/user-edit-"+res.id+"?message=update_success'/>";
+                    window.location.href = "/admin/user-edit-" + res.id;
                 });
             },
             error: function (res) {
                 showAlertAfterFail(function () {
                     $('#loading_image').hide();
-                    window.location.href = "<c:url value='/admin/user-edit-"+res.id+"?message=error_system'/>";
+                    window.location.href = "/admin/user-edit-" + id;
                 })
             }
         });
@@ -173,13 +173,13 @@
             success: function (res) {
                 showAlertAfterUpdateSuccess(function () {
                     $('#loading_image').hide();
-                    window.location.href = "<c:url value='/admin/user-edit-"+res.id+"?message=reset_password_success'/>";
+                    window.location.href = "/admin/user-edit-" + res.id;
                 })
             },
             error: function (res) {
                 showAlertAfterFail(function () {
                     $('#loading_image').hide();
-                    window.location.href = "<c:url value='/admin/user-edit-"+id+"?message=error_system'/>";
+                    window.location.href = "/admin/user-edit-" + id;
                 })
             }
         });

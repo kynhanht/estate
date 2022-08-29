@@ -118,13 +118,13 @@
                 success: function (res) {
                    showAlertAfterUpdateSuccess(function () {
                        $('#loading_image').hide();
-                       window.location.href = "<c:url value='/admin/profile-password?message=update_success'/>";
+                       window.location.href = "/admin/profile-password";
                    });
                 },
                 error: function (res) {
                     showAlertAfterFail(function () {
                         $('#loading_image').hide();
-                        window.location.href = "<c:url value='/admin/profile-password?message=error_system'/>";
+                        window.location.href = "/admin/profile-password";
                     });
                 }
             });

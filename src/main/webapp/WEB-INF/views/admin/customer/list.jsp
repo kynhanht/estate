@@ -286,12 +286,12 @@
             contentType: "application/json",
             success: function (response) {
                 showAlertAfterDeleteSuccess(function () {
-                    window.location.href = "<c:url value='/admin/customer-list?message=delete_success'/>";
+                    window.location.href = "/admin/customer-list";
                 });
             },
             error: function (response) {
                 showAlertAfterFail(function () {
-                    window.location.href = "<c:url value='/admin/customer-list?message=error_system'/>";
+                    window.location.href = "/admin/customer-list";
                 });
             }
         });

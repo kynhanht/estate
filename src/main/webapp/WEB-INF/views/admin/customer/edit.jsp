@@ -169,13 +169,13 @@
             success: function (response) {
                showAlertAfterCreateSuccess(function () {
                    $('#loading_image').hide();
-                   window.location.href = "<c:url value='/admin/customer-edit-"+response.id+"?message=insert_success'/>";
+                   window.location.href = "/admin/customer-edit-" + response.id;
                });
             },
             error: function (response) {
                 showAlertAfterUpdateSuccess(function () {
                     $('#loading_image').hide();
-                    window.location.href = "<c:url value='/admin/customer-edit-"+response.id+"?message=error_system'/>";
+                    window.location.href = "/admin/customer-edit";
                 })
             }
         });
@@ -186,29 +186,30 @@
         e.preventDefault();
         var data = {};
         convertData(data);
-        updateCustomer(data);
+        const customerId = data['id'];
+        updateCustomer(data, customerId);
 
     });
 
-    function updateCustomer(data) {
+    function updateCustomer(data, id) {
         $('#loading_image').show();
         // API
         $.ajax({
             type: "PUT",
-            url: "${customerAPI}/" + data['id'],
+            url: "${customerAPI}/" + id,
             data: JSON.stringify(data),
             dataType: "json",
             contentType: "application/json",
             success: function (response) {
                 showAlertAfterUpdateSuccess(function () {
                     $('#loading_image').hide();
-                    window.location.href = "<c:url value='/admin/customer-edit-"+response.id+"?message=update_success'/>";
+                    window.location.href = "/admin/customer-edit-" + response.id;
                 });
             },
             error: function (response) {
                 showAlertAfterFail(function () {
                     $('#loading_image').hide();
-                    window.location.href = "<c:url value='/admin/customer-edit-"+response.id+"?message=error_system'/>";
+                    window.location.href = "/admin/customer-edit-" + id;
                 })
             }
         });
@@ -216,7 +217,7 @@
 
     // Cancel
     $("#cancelCustomerBtn").click(function () {
-        window.location.href = "<c:url value='/admin/customer-list?message=cancel'/>"
+        window.location.href = "/admin/customer-list"
     });
 
 
@@ -235,13 +236,13 @@
             contentType: "application/json",
             success: function (response) {
                 showAlertAfterSuccess(function () {
-                    window.location.href = "<c:url value='/admin/customer-edit-"+data["customerId"]+"?message=update_success'/>";
+                    window.location.href = "/admin/customer-edit-" + data["customerId"] ;
                 });
 
             },
             error: function (response) {
                 showAlertAfterFail(function () {
-                    window.location.href = "<c:url value='/admin/customer-edit-"+data["customerId"]+"?message=error_system'/>";
+                    window.location.href = "/admin/customer-edit";
                 });
             }
         });
