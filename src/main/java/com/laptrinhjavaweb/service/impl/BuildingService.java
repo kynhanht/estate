@@ -17,6 +17,7 @@ import com.laptrinhjavaweb.service.IBuildingService;
 import com.laptrinhjavaweb.specifications.BuildingSpecification;
 import com.laptrinhjavaweb.specifications.SearchCriteria;
 import com.laptrinhjavaweb.utils.FileUploadUtils;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -56,7 +57,7 @@ public class BuildingService implements IBuildingService {
                 .and(buildingSpecification.byCommon(new SearchCriteria(BuildingEntity_.DIRECTION, request.getDirection(), SearchOperationEnum.CONTAINING)))
                 .and(buildingSpecification.byCommon(new SearchCriteria(BuildingEntity_.LEVEL, request.getLevel(), SearchOperationEnum.CONTAINING)))
                 .and(buildingSpecification.byCommon(new SearchCriteria(BuildingEntity_.RENT_PRICE, request.getRentPriceFrom(), SearchOperationEnum.GREATER_THAN_EQUAL)))
-                .and(buildingSpecification.byCommon(new SearchCriteria(BuildingEntity_.RENT_PRICE, request.getRentAreaTo(),SearchOperationEnum.LESS_THAN_EQUAL)))
+                .and(buildingSpecification.byCommon(new SearchCriteria(BuildingEntity_.RENT_PRICE, request.getRentPriceTo(),SearchOperationEnum.LESS_THAN_EQUAL)))
                 .and(buildingSpecification.byCommon(new SearchCriteria(BuildingEntity_.MANAGER_NAME, request.getManagerName(), SearchOperationEnum.CONTAINING)))
                 .and(buildingSpecification.byCommon(new SearchCriteria(BuildingEntity_.MANAGER_PHONE, request.getManagerPhone(), SearchOperationEnum.CONTAINING)))
                 .and(buildingSpecification.byBuildingTypes(request.getBuildingTypes()))
@@ -96,7 +97,11 @@ public class BuildingService implements IBuildingService {
     public BuildingDTO createBuilding(BuildingDTO buildingDTO) {
 
         BuildingEntity buildingEntity = buildingConverter.convertToEntity(buildingDTO);
-        return buildingConverter.convertToDTO(buildingRepository.save(buildingEntity));
+        String imageUrl = FileUploadUtils.getFileName(buildingDTO.getImage());
+        buildingEntity.setImageUrl(imageUrl);
+        BuildingDTO newBuilding = buildingConverter.convertToDTO(buildingRepository.save(buildingEntity));
+        FileUploadUtils.uploadFile(buildingDTO.getImage());
+        return newBuilding;
     }
 
     @Override
@@ -109,9 +114,17 @@ public class BuildingService implements IBuildingService {
         newBuildingEntity.setUsers(oldBuildingEntity.getUsers());
         newBuildingEntity.setCreatedBy(oldBuildingEntity.getCreatedBy());
         newBuildingEntity.setCreatedDate(oldBuildingEntity.getCreatedDate());
+        String fileName = FileUploadUtils.getFileName(buildingDTO.getImage());
+        if(fileName == null){
+            newBuildingEntity.setImageUrl(oldBuildingEntity.getImageUrl());
+        }else{
+            newBuildingEntity.setImageUrl(fileName);
+        }
         BuildingEntity _buildingEntity = buildingRepository.save(newBuildingEntity);
+        FileUploadUtils.uploadFile(buildingDTO.getImage());
         return buildingConverter.convertToDTO(_buildingEntity);
     }
+
 
     @Override
     @Transactional

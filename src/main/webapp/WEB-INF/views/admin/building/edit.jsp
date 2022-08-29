@@ -30,7 +30,7 @@
 
                         <div class="form-group">
                             <div class="col-xs-9">
-                                <form:hidden path="id" cssClass="form-control"/>
+                                <form:hidden path="id" cssClass="form-control" id="id"/>
                             </div>
                         </div>
                         <div class="form-group">
@@ -209,13 +209,6 @@
                         <div class="form-group">
                             <label class="col-xs-3 no-padding-right"> Loại toà nhà </label>
                             <div class="col-xs-9">
-                                <%--<label class="checkbox-inline"><input type="checkbox" value="TANG_TRET"--%>
-                                                                      <%--name="buildingTypes">Tầng Trệt</label>--%>
-                                <%--<label class="checkbox-inline"><input type="checkbox" value="NGUYEN_CAN"--%>
-                                                                      <%--name="buildingTypes">Nguyên Căn</label>--%>
-                                <%--<label class="checkbox-inline"><input type="checkbox" value="NOI_THAT"--%>
-                                                                      <%--name="buildingTypes">Nội thất</label>--%>
-
                                 <c:forEach var="item" items="${buildingTypes}">
 
                                     <label class="checkbox-inline">
@@ -234,7 +227,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-xs-3 no-padding-right" for="linkOfBuilding"> Link sản phẩm</label>
+                            <label class="col-xs-3 no-padding-right" for="linkOfBuilding">Link sản phẩm</label>
                             <div class="col-xs-9">
                                 <form:input path="linkOfBuilding" cssClass="form-control" />
                             </div>
@@ -250,14 +243,19 @@
                         <div class="form-group">
                             <label class="col-xs-3 no-padding-right" for="image"> Hình đại diện</label>
                             <div class="col-xs-3">
-                                <form:input path="image" type="file" />
+                                <form:input path="image" type="file" accept="image/png, image/jpg, image/jpeg" id="image"/>
                             </div>
                             <div class="col-xs-6">
-                                <img src='<c:url value="${model.imageUrl}"/>' alt="Ảnh đại diện">
+                                <c:choose>
+                                    <c:when test="${not empty model.imageUrl}">
+                                        <img id="thumbnail" src="${model.imageUrl}" alt="Logo Preview" width="500px" height="500px">
+                                    </c:when>
+                                    <c:otherwise>
+                                        <img id="thumbnail" src="/img/default-image.png" alt="Logo Preview" width="500px" height="500px">
+                                    </c:otherwise>
+                                </c:choose>
                             </div>
                         </div>
-
-
                         <div class="form-group">
                             <div class="col-xs-9 col-xs-push-3">
                                 <c:choose>
@@ -266,15 +264,13 @@
                                                value="Cập nhật toà nhà" id="updateBuildingBtn"/>
                                     </c:when>
                                     <c:otherwise>
-                                        <input type="submit" class="btn btn-md btn-primary"
+                                        <input type="button" class="btn btn-md btn-primary"
                                                value="Thêm mới toà nhà" id="createBuildingBtn"/>
                                     </c:otherwise>
                                 </c:choose>
                                 <input type="button" class="btn btn-md btn-warning"
                                        value="Huỷ" id="cancelBuildingBtn"/>
                                 <img src="/img/loading.gif" style="display: none; height: 100px" id="loading_image">
-
-
 
                             </div>
                         </div>
@@ -342,50 +338,68 @@
                 success: function (response) {
                     showAlertAfterCreateSuccess(function () {
                         $('#loading_image').hide();
-                        window.location.href = "<c:url value='/admin/building-edit-"+response.id+"?message=insert_success'/>";
+                        window.location.href = "/admin/building-edit-"+ response.id;
                     });
                 },
                 error: function (response) {
                     showAlertAfterFail(function () {
                         $('#loading_image').hide();
-                        window.location.href = "<c:url value='/admin/building-edit?message=error_system'/>";
+                        window.location.href = "/admin/building-edit";
                     });
                 }
             });
         }
         // Update building
-        $("#updateBuildingBtn").click(function () {
-            var data = {};
-            convertData(data);
-            updateBuilding(data);
+        $("#updateBuildingBtn").click(function (e) {
+            e.preventDefault();
+            let form = $("#formEdit")[0];
+            const formData = new FormData(form);
+            const id = $("#id").val();
+            updateBuilding(id, formData);
         });
-        function updateBuilding(data){
+        function updateBuilding(id, formData){
             $('#loading_image').show();
             // API
             $.ajax({
                 type: "PUT",
-                url: "${buildingAPI}/"+data['id'],
-                data: JSON.stringify(data),
+                url: "${buildingAPI}/"+id,
+                data: formData,
                 dataType: "json",
-                contentType: "application/json",
+                enctype: 'multipart/form-data',
+                // prevent jQuery from automatically transforming the data into a query string
+                processData: false,
+                contentType: false,
                 success: function (response) {
                     showAlertAfterUpdateSuccess(function () {
                         $('#loading_image').hide();
-                        window.location.href = "<c:url value='/admin/building-edit-"+response.id+"?message=update_success'/>";
+                        window.location.href = "/admin/building-edit-"+ response.id;
                     })
                 },
                 error: function (response) {
                     showAlertAfterFail(function () {
                         $('#loading_image').hide();
-                        window.location.href = "<c:url value='/admin/building-edit-"+response.id+"?message=error_system'/>";
+                        window.location.href = "/admin/building-edit-"+ id;
                     })
                 }
             });
         }
         // Cancel building
         $("#cancelBuildingBtn").click(function () {
-            window.location.href = "<c:url value='/admin/building-list?message=add_cancel'/>"
+            window.location.href = "/admin/building-list?message=add_cancel"
         });
+
+        $("#image").change(function () {
+            showImageThumbnail(this);
+        });
+
+        function showImageThumbnail(fileInput) {
+            const file = fileInput.files[0];
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                $('#thumbnail').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(file);
+        }
 
     });
 

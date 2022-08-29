@@ -31,11 +31,7 @@ public class SystemConstants {
     public static final String MODEL_ROLES = "roles";
 
     // File
-    public static final String UPLOAD_BUILDING_FILE_DIRECTORY_PATH = "/home/kynhanht/images/buildings/";
-    public static final String LOAD_BUILDING_FILE_PATH = "/static/images/buildings/";
-    public static final String DEFAULT_IMAGE = "default-image.jpg";
-
-
-
+    //public static final String UPLOAD_BUILDING_FILE_DIR = "/home/kynhanht/images/buildings/";
+    public static final String UPLOAD_BUILDING_FILE_DIR = "/images/building/";
 
 }

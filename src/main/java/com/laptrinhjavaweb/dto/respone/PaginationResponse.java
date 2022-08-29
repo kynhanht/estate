@@ -10,7 +10,7 @@ public class PaginationResponse<T> implements Serializable {
     private List<T> listResult = new ArrayList<>();
     private Integer page = 1;
     private Integer totalPages;
-    private Integer totalPageItems = 2;
+    private Integer totalPageItems = 4;
     private Integer totalItems;
     private String tableId = "tableList";
 

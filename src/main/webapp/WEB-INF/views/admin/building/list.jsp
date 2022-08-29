@@ -187,14 +187,14 @@
                         <display:table name="${modelResponse.listResult}" cellspacing="0" cellpadding="0"
                                        requestURI="${buildingListURL}" partialList="true" sort="external" defaultsort="2" defaultorder="ascending"
                                        id="${modelResponse.tableId}" size="${modelResponse.totalItems}" pagesize="${modelResponse.totalPageItems}"
-                                       export="false"
+                                       export="true"
                                        class="table table-fcv-ace table-striped table-bordered table-hover dataTable no-footer"
                                        style="margin: 3em 0 1.5em;">
 
                             <display:column title="<fieldset class='form-group'>
 												        <input type='checkbox' id='checkAll' class='check-box-element'>
-												        </fieldset>" class="center select-cell"
-                                            headerClass="center select-cell">
+												        </fieldset>" class="center select-cell export-wthtml"
+                                            headerClass="center select-cell export-wthtml" >
                                 <fieldset>
                                     <input type="checkbox" name="checkList" value="${tableList.id}"
                                            id="checkbox_${tableList.id}" class="check-box-element"/>

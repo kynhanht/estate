@@ -1,11 +1,9 @@
 package com.laptrinhjavaweb.converter;
 
-import com.laptrinhjavaweb.constant.SystemConstants;
 import com.laptrinhjavaweb.dto.BuildingDTO;
 import com.laptrinhjavaweb.dto.respone.BuildingSearchResponse;
 import com.laptrinhjavaweb.entity.BuildingEntity;
 import com.laptrinhjavaweb.entity.RentAreaEntity;
-import com.laptrinhjavaweb.utils.DateUtils;
 import com.laptrinhjavaweb.utils.FileUploadUtils;
 import com.laptrinhjavaweb.utils.SystemUtils;
 import org.apache.commons.lang.StringUtils;
@@ -27,7 +25,7 @@ public class BuildingConverter {
         BuildingDTO entityDTO = modelMapper.map(buildingEntity, BuildingDTO.class);
         entityDTO.setBuildingTypes(SystemUtils.convertBuildingTypeList(buildingEntity.getBuildingTypes()));
         entityDTO.setRentArea(SystemUtils.convertToRentArea(buildingEntity.getRentAreas()));
-        entityDTO.setImageUrl(FileUploadUtils.loadFile(buildingEntity.getImageUrl()));
+        entityDTO.setImageUrl(FileUploadUtils.loadPathFile(buildingEntity.getImageUrl()));
         return entityDTO;
     }
 
@@ -47,16 +45,12 @@ public class BuildingConverter {
             }
             buildingEntity.setRentAreas(rentAreas);
         }
-        // convert imageUrl
-        String imageUrl = FileUploadUtils.uploadFile(buildingDTO.getImage());
-        buildingEntity.setImageUrl(imageUrl);
         return  buildingEntity;
     }
 
     public BuildingSearchResponse convertToBuildingSearchResponse(BuildingEntity buildingEntity){
 
         BuildingSearchResponse response = modelMapper.map(buildingEntity,BuildingSearchResponse.class);
-//        response.setCreatedDate(DateUtils.convertDateToString(buildingEntity.getCreatedDate()));
         response.setAddress(SystemUtils.convertToAddress(buildingEntity.getStreet(), buildingEntity.getWard(), buildingEntity.getDistrictCode()));
         return  response;
     }
