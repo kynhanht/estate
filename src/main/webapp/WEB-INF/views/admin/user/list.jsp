@@ -103,24 +103,24 @@
                             <div class="table-btn-controls">
                                 <div class="pull-right tableTools-container">
                                     <div class="dt-buttons btn-overlap btn-group">
-                                        <a flag="info"
-                                           class="dt-button buttons-colvis btn btn-white btn-primary btn-bold"
-                                           data-toggle="tooltip"
-                                        <%--title='<spring:message code="label.user.add"/>'--%>
-                                           title="Thêm người dùng"
-                                           href='<c:url value="/admin/user-edit"/>'>
-															<span>
-																<i class="fa fa-plus-circle bigger-110 purple"></i>
-															</span>
-                                        </a>
-                                        <button id="btnDelete" type="button" disabled
-                                                class="dt-button buttons-html5 btn btn-white btn-primary btn-bold"
-                                                data-toggle="tooltip"
-                                                title="Xóa bài viết">
-															<span>
-																<i class="fa fa-trash-o bigger-110 pink"></i>
-															</span>
-                                        </button>
+                                        <security:authorize access="hasRole('MANAGER')">
+                                            <a flag="info"
+                                               class="dt-button buttons-colvis btn btn-white btn-primary btn-bold"
+                                               data-toggle="tooltip"
+                                            <%--title='<spring:message code="label.user.add"/>'--%>
+                                               title="Thêm người dùng"
+                                               href='<c:url value="/admin/user-edit"/>'>
+                                                                <span>
+                                                                    <i class="fa fa-plus-circle bigger-110 purple"></i>
+                                                                </span>
+                                            </a>
+                                            <button id="btnDelete" type="button" disabled
+                                                    class="dt-button buttons-html5 btn btn-white btn-primary btn-bold"
+                                                    data-toggle="tooltip"
+                                                    title="Xóa người dùng">
+															<span><i class="fa fa-trash-o bigger-110 pink"></i></span>
+                                            </button>
+                                        </security:authorize>
                                     </div>
                                 </div>
                             </div>
@@ -136,13 +136,15 @@
                                                class="table table-fcv-ace table-striped table-bordered table-hover dataTable no-footer"
                                                style="margin: 3em 0 1.5em;">
                                     <display:column title="<fieldset class='form-group'>
-												        <input type='checkbox' id='checkAll' class='check-box-element'>
-												        </fieldset>" class="center select-cell"
+                                                        <input type='checkbox' id='checkAll' class='check-box-element'>
+                                                        </fieldset>" class="center select-cell"
                                                     headerClass="center select-cell">
-                                        <fieldset>
-                                            <input type="checkbox" name="checkList" value="${tableList.id}"
-                                                   id="checkbox_${tableList.id}" class="check-box-element"/>
-                                        </fieldset>
+                                            <c:if test="${tableList.roleCode != 'MANAGER'}">
+                                                <fieldset>
+                                                    <input type="checkbox" name="checkList" value="${tableList.id}"
+                                                           id="checkbox_${tableList.id}" class="check-box-element"/>
+                                                </fieldset>
+                                            </c:if>
                                     </display:column>
                                     <display:column headerClass="text-left" property="userName" title="Tên đăng nhập" sortName="userName" sortable="true"/>
                                     <display:column headerClass="text-left" property="fullName" title="Tên đầy đủ" sortName="fullName" sortable="true"/>

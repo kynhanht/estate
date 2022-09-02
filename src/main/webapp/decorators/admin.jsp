@@ -83,6 +83,26 @@
             });
         }
 
+        function showAlertBeforeConfirm(callback) {
+            swal({
+                title: "Xác nhận thực hiện",
+                text: "Bạn có chắc chắn muốn thực hiện",
+                type: "info",
+                showConfirmButton: true,
+                showCancelButton: true,
+                confirmButtonText: "Xác nhận",
+                cancelButtonText: "Hủy bỏ",
+                confirmButtonClass: "btn btn-success",
+                cancelButtonClass: "btn btn-danger"
+            }).then(function (res) {
+                if(res.value){
+                    callback();
+                }else if(res.dismiss == 'cancel'){
+                    console.log('cancel');
+                }
+            });
+        }
+
 
         // Alert when create success
         function showAlertAfterCreateSuccess(callback) {

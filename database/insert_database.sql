@@ -59,8 +59,8 @@ INSERT INTO assignment_customer(staff_id, customer_id) VALUES
 (3,3),
 (4,3);
 
-INSERT INTO transactions(code, note, customer_id) VAlUES
-('TRANSACTION_1','đi chơi với khách',1),
-('TRANSACTION_1','đi ăn với khách',1),
-('TRANSACTION_2','Đến toà nhà A',1),
-('TRANSACTION_3','Ký hợp đồng 50tr',1);
+INSERT INTO transactions(code, note, customer_id, created_date) VAlUES
+('TRANSACTION_1','đi chơi với khách',1,'2022-08-31 12:02:20'),
+('TRANSACTION_1','đi ăn với khách',1,'2022-08-31 10:02:20'),
+('TRANSACTION_2','Đến toà nhà A',1,'2022-08-30 9:00:20'),
+('TRANSACTION_3','Ký hợp đồng 50tr',1,'2022-08-29 9:10:30');

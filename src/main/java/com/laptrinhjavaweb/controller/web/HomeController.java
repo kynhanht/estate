@@ -37,7 +37,7 @@ public class HomeController {
 
 	private String determineTarget(HttpServletRequest request, Authentication authentication) {
 		String target = "";
-		// When not login or error
+		// When user don't login or error
 		if(authentication == null
 				|| request.getParameter("incorrectAccount") !=null
 				|| request.getParameter("accessDenied") != null
@@ -45,7 +45,7 @@ public class HomeController {
 				|| request.getParameter("logout") != null){
 			target = "login";
 		}
-		// When login
+		// When user logined
 		else{
 			List<String> roles = SecurityUtils.getAuthorities();
 			if (roles.contains(SystemConstants.STAFF_ROLE)

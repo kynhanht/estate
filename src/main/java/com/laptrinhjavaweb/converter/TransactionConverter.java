@@ -15,7 +15,7 @@ public class TransactionConverter  {
 
     public TransactionDTO convertToDTO(TransactionEntity transactionEntity){
         TransactionDTO transactionDTO = modelMapper.map(transactionEntity, TransactionDTO.class);
-        transactionDTO.setCreatedBy(DateUtils.convertDateToString(transactionEntity.getCreatedDate()));
+        transactionDTO.setCreatedBy(DateUtils.convertFullDateToString(transactionEntity.getCreatedDate()));
         return  transactionDTO;
     }
 }

@@ -48,10 +48,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         // Configure authorization
         http.csrf().disable().authorizeRequests()
+                .antMatchers("/admin/user-edit**").hasRole("MANAGER")
                 .antMatchers("/admin/building-edit").hasRole("MANAGER")
                 .antMatchers("/admin/customer-edit").hasRole("MANAGER")
                 .antMatchers("/admin/**").hasAnyRole("MANAGER", "STAFF")
-                .antMatchers("/login/**", "/web/**", "/errors", "/home", "/api/**").permitAll()
+                .antMatchers("/login/**", "/web/**", "/errors", "/home").permitAll()
                 .anyRequest().authenticated();
         // Configure remember me
         http.rememberMe()

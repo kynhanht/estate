@@ -222,30 +222,33 @@
 
 
     function createTraction(formId) {
-        var data = {};
-        var formData = $(formId).serializeArray();
-        $.each(formData, function (indexInArray, element) {
-            data["" + element.name + ""] = element.value;
-        });
-        // API
-        $.ajax({
-            type: "POST",
-            url: "${transactionAPI}",
-            data: JSON.stringify(data),
-            dataType: "json",
-            contentType: "application/json",
-            success: function (response) {
-                showAlertAfterSuccess(function () {
-                    window.location.href = "/admin/customer-edit-" + data["customerId"] ;
-                });
 
-            },
-            error: function (response) {
-                showAlertAfterFail(function () {
-                    window.location.href = "/admin/customer-edit";
-                });
-            }
+        showAlertBeforeConfirm(function () {
+            var data = {};
+            var formData = $(formId).serializeArray();
+            $.each(formData, function (indexInArray, element) {
+                data["" + element.name + ""] = element.value;
+            });
+            // API
+            $.ajax({
+                type: "POST",
+                url: "${transactionAPI}",
+                data: JSON.stringify(data),
+                dataType: "json",
+                contentType: "application/json",
+                success: function (response) {
+                    showAlertAfterSuccess(function () {
+                        window.location.href = "/admin/customer-edit-" + data["customerId"] ;
+                    })
+                },
+                error: function (response) {
+                    showAlertAfterFail(function () {
+                        window.location.href = "/admin/customer-edit";
+                    });
+                }
+            });
         });
+
     }
 </script>
 

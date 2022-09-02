@@ -16,7 +16,7 @@ public class CustomAuthenticationFailureHandler implements AuthenticationFailure
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) {
         try {
-            logger.info("Login failed with username: {} and password: {}", request.getParameter("j_username"), request.getParameter("j_password"));
+            logger.info("Login failed with username: {} and password: {}", request.getParameter("username"), request.getParameter("password"));
             response.sendRedirect("/login?incorrectAccount");
         } catch (Exception e) {
             logger.error(e.getMessage());
