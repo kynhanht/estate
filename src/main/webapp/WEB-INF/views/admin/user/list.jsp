@@ -41,12 +41,12 @@
             <div class="row">
                 <div class="col-xs-12">
                     <%--<c:if test="${messageResponse!=null}">--%>
-                        <%--<div class="alert alert-block alert-${alert}">--%>
-                            <%--<button type="button" class="close" data-dismiss="alert">--%>
-                                <%--<i class="ace-icon fa fa-times"></i>--%>
-                            <%--</button>--%>
-                                <%--${messageResponse}--%>
-                        <%--</div>--%>
+                    <%--<div class="alert alert-block alert-${alert}">--%>
+                    <%--<button type="button" class="close" data-dismiss="alert">--%>
+                    <%--<i class="ace-icon fa fa-times"></i>--%>
+                    <%--</button>--%>
+                    <%--${messageResponse}--%>
+                    <%--</div>--%>
                     <%--</c:if>--%>
                     <!-- PAGE CONTENT BEGINS -->
                     <div class="row">
@@ -104,7 +104,7 @@
                                             <a flag="info"
                                                class="dt-button buttons-colvis btn btn-white btn-primary btn-bold"
                                                data-toggle="tooltip"
-                                            <%--title='<spring:message code="label.user.add"/>'--%>
+                                                <%--title='<spring:message code="label.user.add"/>'--%>
                                                title="Thêm người dùng"
                                                href='<c:url value="/admin/user-edit"/>'>
                                                                 <span>
@@ -115,7 +115,7 @@
                                                     class="dt-button buttons-html5 btn btn-white btn-primary btn-bold"
                                                     data-toggle="tooltip"
                                                     title="Xóa người dùng">
-															<span><i class="fa fa-trash-o bigger-110 pink"></i></span>
+                                                <span><i class="fa fa-trash-o bigger-110 pink"></i></span>
                                             </button>
                                         </security:authorize>
                                     </div>
@@ -127,8 +127,10 @@
                         <div class="col-xs-12">
                             <div class="table-responsive">
                                 <display:table name="${modelResponse.listResult}" cellspacing="0" cellpadding="0"
-                                               requestURI="${userListURL}" partialList="true" sort="external" defaultsort="2" defaultorder="ascending"
-                                               id="${modelResponse.tableId}" size="${modelResponse.totalItems}" pagesize="${modelResponse.totalPageItems}"
+                                               requestURI="${userListURL}" partialList="true" sort="external"
+                                               defaultsort="2" defaultorder="ascending"
+                                               id="${modelResponse.tableId}" size="${modelResponse.totalItems}"
+                                               pagesize="${modelResponse.totalPageItems}"
                                                export="false"
                                                class="table table-fcv-ace table-striped table-bordered table-hover dataTable no-footer"
                                                style="margin: 3em 0 1.5em;">
@@ -136,15 +138,17 @@
                                                         <input type='checkbox' id='checkAll' class='check-box-element'>
                                                         </fieldset>" class="center select-cell"
                                                     headerClass="center select-cell">
-                                            <c:if test="${tableList.roleCode != 'MANAGER'}">
-                                                <fieldset>
-                                                    <input type="checkbox" name="checkList" value="${tableList.id}"
-                                                           id="checkbox_${tableList.id}" class="check-box-element"/>
-                                                </fieldset>
-                                            </c:if>
+                                        <c:if test="${tableList.roleCode != 'MANAGER'}">
+                                            <fieldset>
+                                                <input type="checkbox" name="checkList" value="${tableList.id}"
+                                                       id="checkbox_${tableList.id}" class="check-box-element"/>
+                                            </fieldset>
+                                        </c:if>
                                     </display:column>
-                                    <display:column headerClass="text-left" property="userName" title="Tên đăng nhập" sortName="userName" sortable="true"/>
-                                    <display:column headerClass="text-left" property="fullName" title="Tên đầy đủ" sortName="fullName" sortable="true"/>
+                                    <display:column headerClass="text-left" property="userName" title="Tên đăng nhập"
+                                                    sortName="userName" sortable="true"/>
+                                    <display:column headerClass="text-left" property="fullName" title="Tên đầy đủ"
+                                                    sortName="fullName" sortable="true"/>
                                     <display:column headerClass="col-actions" title="Thao tác">
                                         <c:choose>
                                             <c:when test="${tableList.roleCode == 'MANAGER'}">
@@ -153,7 +157,7 @@
                                             <c:otherwise>
                                                 <a class="btn btn-sm btn-primary btn-edit" data-toggle="tooltip"
                                                    title="Cập nhật người dùng"
-                                                   href='<c:url value="/admin/user-edit-${tableList.id}"/>'>
+                                                   href='<c:url value="/admin/user-edit/${tableList.id}"/>'>
                                                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                                 </a>
                                             </c:otherwise>

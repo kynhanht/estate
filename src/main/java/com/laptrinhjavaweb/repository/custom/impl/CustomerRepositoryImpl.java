@@ -23,19 +23,19 @@ public class CustomerRepositoryImpl implements CustomerRepositoryCustom {
         StringBuilder sql = new StringBuilder("SELECT c FROM CustomerEntity AS c \n");
         sql.append("WHERE 1=1 \n");
 
-        if(StringUtils.isNotBlank(builder.getFullName())){
-            sql.append("AND c.fullName like '%"+ builder.getFullName()+"%' \n");
+        if (StringUtils.isNotBlank(builder.getFullName())) {
+            sql.append("AND c.fullName like '%" + builder.getFullName() + "%' \n");
         }
-        if(StringUtils.isNotBlank(builder.getPhone())){
-            sql.append("AND c.phone like '%"+ builder.getPhone()+"%' \n");
+        if (StringUtils.isNotBlank(builder.getPhone())) {
+            sql.append("AND c.phone like '%" + builder.getPhone() + "%' \n");
         }
-        if(StringUtils.isNotBlank(builder.getEmail())){
-            sql.append("AND c.email like '%"+ builder.getEmail()+"%' \n");
+        if (StringUtils.isNotBlank(builder.getEmail())) {
+            sql.append("AND c.email like '%" + builder.getEmail() + "%' \n");
         }
-        if(builder.getStaffId() != null){
-            sql.append("AND EXISTS (SELECT u FROM c.users AS u WHERE u.id = "+builder.getStaffId() +")\n");
+        if (builder.getStaffId() != null) {
+            sql.append("AND EXISTS (SELECT u FROM c.users AS u WHERE u.id = " + builder.getStaffId() + ")\n");
         }
-        sql.append("AND c.status = "+ builder.getStatus());
+        sql.append("AND c.status = " + builder.getStatus());
 
         TypedQuery<CustomerEntity> query = entityManager.createQuery(sql.toString(), CustomerEntity.class);
 

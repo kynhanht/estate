@@ -3,7 +3,7 @@ package com.laptrinhjavaweb.dto.request;
 import java.io.Serializable;
 import java.util.List;
 
-public class AssignmentBuildingRequest implements Serializable{
+public class AssignmentBuildingRequest implements Serializable {
 
     private List<Long> staffIds;
 

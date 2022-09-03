@@ -83,7 +83,8 @@
                                 </c:choose>
                                 <input type="button" class="btn btn-md btn-warning"
                                        value="Huỷ" id="cancelCustomerBtn"/>
-                                <img src="/static/img/loading.gif" style="display: none; height: 100px" id="loading_image">
+                                <img src="/static/img/loading.gif" style="display: none; height: 100px"
+                                     id="loading_image">
                             </div>
                         </div>
                     </form:form>
@@ -94,46 +95,46 @@
 
             <c:forEach items="${transactionTypeList}" var="transactionType">
                 <br>
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <h4 style="display: inline-block; color: #3a87ad">
-                                    ${transactionType.transactionValue}
-                                <button type="button"
-                                        class="btn btn-white btn-info btn-bold"
-                                        data-toggle="tooltip"
-                                        onclick="createTraction(${transactionType.code})"
-                                        title="thêm giao dịch">
-                                    <span><i class="fa fa-plus-circle bigger-110 purple"></i></span>
-                                </button>
-                            </h4>
-                            <table class="table table-bordered table-hover">
-                                <thead>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h4 style="display: inline-block; color: #3a87ad">
+                                ${transactionType.transactionValue}
+                            <button type="button"
+                                    class="btn btn-white btn-info btn-bold"
+                                    data-toggle="tooltip"
+                                    onclick="createTraction(${transactionType.code})"
+                                    title="thêm giao dịch">
+                                <span><i class="fa fa-plus-circle bigger-110 purple"></i></span>
+                            </button>
+                        </h4>
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                            <tr>
+                                <th>Ngày tạo</th>
+                                <th>Ghi chú</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <c:forEach items="${transactionType.transactions}" var="item">
                                 <tr>
-                                    <th>Ngày tạo</th>
-                                    <th>Ghi chú</th>
+                                    <td>${item.createdBy}</td>
+                                    <td>${item.note}</td>
                                 </tr>
-                                </thead>
-                                <tbody>
-                                <c:forEach items="${transactionType.transactions}" var="item">
-                                    <tr>
-                                        <td>${item.createdBy}</td>
-                                        <td>${item.note}</td>
-                                    </tr>
-                                </c:forEach>
-                                <tr>
-                                    <td></td>
-                                    <td>
-                                        <form id="${transactionType.code}">
-                                            <input type="hidden" name="code" value="${transactionType.code}"/>
-                                            <input type="hidden" name="customerId" value="${model.id}"/>
-                                            <input class="form-control" name="note"/>
-                                        </form>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                            </c:forEach>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <form id="${transactionType.code}">
+                                        <input type="hidden" name="code" value="${transactionType.code}"/>
+                                        <input type="hidden" name="customerId" value="${model.id}"/>
+                                        <input class="form-control" name="note"/>
+                                    </form>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
+                </div>
             </c:forEach>
 
 
@@ -167,10 +168,10 @@
             dataType: "json",
             contentType: "application/json",
             success: function (response) {
-               showAlertAfterCreateSuccess(function () {
-                   $('#loading_image').hide();
-                   window.location.href = "/admin/customer-edit-" + response.id;
-               });
+                showAlertAfterCreateSuccess(function () {
+                    $('#loading_image').hide();
+                    window.location.href = "/admin/customer-edit/" + response.id;
+                });
             },
             error: function (response) {
                 showAlertAfterUpdateSuccess(function () {
@@ -203,13 +204,13 @@
             success: function (response) {
                 showAlertAfterUpdateSuccess(function () {
                     $('#loading_image').hide();
-                    window.location.href = "/admin/customer-edit-" + response.id;
+                    window.location.href = "/admin/customer-edit/" + response.id;
                 });
             },
             error: function (response) {
                 showAlertAfterFail(function () {
                     $('#loading_image').hide();
-                    window.location.href = "/admin/customer-edit-" + id;
+                    window.location.href = "/admin/customer-edit/" + id;
                 })
             }
         });
@@ -238,7 +239,7 @@
                 contentType: "application/json",
                 success: function (response) {
                     showAlertAfterSuccess(function () {
-                        window.location.href = "/admin/customer-edit-" + data["customerId"] ;
+                        window.location.href = "/admin/customer-edit/" + data["customerId"];
                     })
                 },
                 error: function (response) {

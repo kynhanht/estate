@@ -15,10 +15,10 @@ import java.nio.file.StandardCopyOption;
 public class FileUploadUtils {
 
 
-    public static void uploadFile(MultipartFile file){
+    public static void uploadFile(MultipartFile file) {
 
-        if(file == null || file.isEmpty()){
-            return ;
+        if (file == null || file.isEmpty()) {
+            return;
         }
         // Get file name, Example: images.jpg
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
@@ -46,17 +46,17 @@ public class FileUploadUtils {
         }
     }
 
-    public static String loadPathFile(String fileName){
+    public static String loadPathFile(String fileName) {
 
-        if(org.apache.commons.lang.StringUtils.isBlank(fileName)){
+        if (org.apache.commons.lang.StringUtils.isBlank(fileName)) {
             return null;
         }
         Path filePath = Paths.get(SystemConstants.UPLOAD_BUILDING_FILE_DIR).resolve(fileName).normalize();
         return filePath.toString();
     }
 
-    public static String getFileName(MultipartFile file){
-        if(file == null || file.isEmpty() ){
+    public static String getFileName(MultipartFile file) {
+        if (file == null || file.isEmpty()) {
             return null;
         }
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());

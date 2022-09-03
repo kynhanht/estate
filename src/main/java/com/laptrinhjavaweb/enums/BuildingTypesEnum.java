@@ -1,6 +1,6 @@
 package com.laptrinhjavaweb.enums;
 
-public enum  BuildingTypesEnum {
+public enum BuildingTypesEnum {
 
     TANG_TRET("Tầng trệt"),
     NGUYEN_CAN("Nguyên căn"),
@@ -16,12 +16,12 @@ public enum  BuildingTypesEnum {
         return buildingTypeValue;
     }
 
-    public static String findBuildingTypeValue(String name){
-        for(BuildingTypesEnum buildingType: BuildingTypesEnum.values()){
-            if(buildingType.name().equals(name)){
+    public static String findBuildingTypeValue(String name) {
+        for (BuildingTypesEnum buildingType : BuildingTypesEnum.values()) {
+            if (buildingType.name().equals(name)) {
                 return buildingType.getBuildingTypeValue();
             }
         }
-        return  "";
+        return "";
     }
 }

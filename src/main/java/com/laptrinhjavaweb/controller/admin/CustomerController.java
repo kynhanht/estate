@@ -55,7 +55,7 @@ public class CustomerController {
         return mav;
     }
 
-    @RequestMapping(value = "/admin/customer-edit-{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/customer-edit/{id}", method = RequestMethod.GET)
     public ModelAndView updateBuilding(@PathVariable("id") Long id) {
         ModelAndView mav = new ModelAndView("admin/customer/edit");
         mav.addObject(SystemConstants.MODEL, customerService.getCustomerById(id));

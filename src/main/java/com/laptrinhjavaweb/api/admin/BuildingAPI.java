@@ -24,35 +24,35 @@ public class BuildingAPI {
     private IUserService userService;
 
     @PostMapping
-    public ResponseEntity<BuildingDTO> createBuilding(@ModelAttribute BuildingDTO buildingDTO){
+    public ResponseEntity<BuildingDTO> createBuilding(@ModelAttribute BuildingDTO buildingDTO) {
         return ResponseEntity.status(HttpStatus.CREATED).body(buildingService.createBuilding(buildingDTO));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<BuildingDTO> updateBuilding(@PathVariable Long id, @ModelAttribute BuildingDTO buildingDTO){
+    public ResponseEntity<BuildingDTO> updateBuilding(@PathVariable Long id, @ModelAttribute BuildingDTO buildingDTO) {
 
         return ResponseEntity.ok(buildingService.updateBuilding(id, buildingDTO));
     }
 
 
     @DeleteMapping
-    public ResponseEntity<Void> removeBuildings(@RequestBody List<Long> ids){
+    public ResponseEntity<Void> removeBuildings(@RequestBody List<Long> ids) {
 
-        if(ids!=null && !ids.isEmpty()){
+        if (ids != null && !ids.isEmpty()) {
             buildingService.deleteBuildings(ids);
         }
         return ResponseEntity.noContent().build();
     }
 
     @PostMapping("/assignment-building")
-    public ResponseEntity<Void> assignBuilding(@RequestBody AssignmentBuildingRequest request){
+    public ResponseEntity<Void> assignBuilding(@RequestBody AssignmentBuildingRequest request) {
 
         buildingService.assignBuilding(request);
         return ResponseEntity.noContent().build();
     }
 
     @GetMapping("/{buildingId}/staffs")
-    public ResponseEntity<List<StaffResponse>> loadStaff(@PathVariable  Long buildingId){
+    public ResponseEntity<List<StaffResponse>> loadStaff(@PathVariable Long buildingId) {
 
         return ResponseEntity.ok(userService.getStaffsByBuildingId(buildingId));
     }

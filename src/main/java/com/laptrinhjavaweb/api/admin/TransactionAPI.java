@@ -20,7 +20,7 @@ public class TransactionAPI {
 
 
     @PostMapping
-    public ResponseEntity<TransactionDTO> createTransaction(@RequestBody TransactionRequest transactionRequest){
-        return  ResponseEntity.status(HttpStatus.CREATED).body(transactionService.createTransaction(transactionRequest));
+    public ResponseEntity<TransactionDTO> createTransaction(@RequestBody TransactionRequest transactionRequest) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(transactionService.createTransaction(transactionRequest));
     }
 }

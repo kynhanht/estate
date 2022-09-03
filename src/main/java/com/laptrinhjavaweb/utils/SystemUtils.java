@@ -35,39 +35,39 @@ public class SystemUtils {
         return transactions;
     }
 
-    public static String convertToAddress(String street, String ward, String districtCode){
-       if(StringUtils.isNotBlank(street) || StringUtils.isNotBlank(ward) || StringUtils.isNotBlank(districtCode) ){
-           List<String> address = new ArrayList<>();
-           if (StringUtils.isNotBlank(street)) {
-               address.add(street);
-           }
-           if (StringUtils.isNotBlank(ward)) {
-               address.add(ward);
-           }
-           if (StringUtils.isNotBlank(districtCode)) {
-               address.add(DistrictsEnum.findDistrictValue(districtCode));
-           }
-           return address.stream().collect(Collectors.joining(", "));
-       }
-       return "";
+    public static String convertToAddress(String street, String ward, String districtCode) {
+        if (StringUtils.isNotBlank(street) || StringUtils.isNotBlank(ward) || StringUtils.isNotBlank(districtCode)) {
+            List<String> address = new ArrayList<>();
+            if (StringUtils.isNotBlank(street)) {
+                address.add(street);
+            }
+            if (StringUtils.isNotBlank(ward)) {
+                address.add(ward);
+            }
+            if (StringUtils.isNotBlank(districtCode)) {
+                address.add(DistrictsEnum.findDistrictValue(districtCode));
+            }
+            return address.stream().collect(Collectors.joining(", "));
+        }
+        return "";
     }
 
-    public static String convertBuildingTypes(List<String> buildingTypeList){
-        if(buildingTypeList != null && !buildingTypeList.isEmpty()){
+    public static String convertBuildingTypes(List<String> buildingTypeList) {
+        if (buildingTypeList != null && !buildingTypeList.isEmpty()) {
             return buildingTypeList.stream().collect(Collectors.joining(","));
         }
         return null;
 
     }
 
-    public static List<String> convertBuildingTypeList(String buildingTypes){
-        if(StringUtils.isNotBlank(buildingTypes)){
+    public static List<String> convertBuildingTypeList(String buildingTypes) {
+        if (StringUtils.isNotBlank(buildingTypes)) {
             return Arrays.asList(buildingTypes.split(","));
         }
         return null;
     }
 
-    public static String convertToRentArea(List<RentAreaEntity> rentAreaList){
+    public static String convertToRentArea(List<RentAreaEntity> rentAreaList) {
         return rentAreaList
                 .stream()
                 .map(rentArea -> String.valueOf(rentArea.getValue()))

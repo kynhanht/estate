@@ -21,7 +21,7 @@ public class CustomExceptionHandler {
 
 
     @ExceptionHandler(NotFoundException.class)
-    public ResponseEntity<ErrorMessage> handleNotFoundException(NotFoundException ex, WebRequest request){
+    public ResponseEntity<ErrorMessage> handleNotFoundException(NotFoundException ex, WebRequest request) {
 
         logger.error("Runtime error: {}", ex.getMessage());
 
@@ -32,7 +32,7 @@ public class CustomExceptionHandler {
 
 
     @ExceptionHandler(MethodNotAllowedException.class)
-    public ResponseEntity<ErrorMessage> handleMethodNotAllowedException(MethodNotAllowedException ex, WebRequest request){
+    public ResponseEntity<ErrorMessage> handleMethodNotAllowedException(MethodNotAllowedException ex, WebRequest request) {
 
         logger.error("Runtime error: {}", ex.getMessage());
 
@@ -42,7 +42,7 @@ public class CustomExceptionHandler {
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<ErrorMessage> handleMethodArgumentNotValidException(MethodArgumentNotValidException ex, WebRequest request){
+    public ResponseEntity<ErrorMessage> handleMethodArgumentNotValidException(MethodArgumentNotValidException ex, WebRequest request) {
 
         logger.error("Runtime error: {}", ex.getMessage());
 

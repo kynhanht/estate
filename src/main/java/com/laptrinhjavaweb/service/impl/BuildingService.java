@@ -56,7 +56,7 @@ public class BuildingService implements IBuildingService {
                 .and(buildingSpecification.byCommon(new SearchCriteria(BuildingEntity_.DIRECTION, request.getDirection(), SearchOperationEnum.CONTAINING)))
                 .and(buildingSpecification.byCommon(new SearchCriteria(BuildingEntity_.LEVEL, request.getLevel(), SearchOperationEnum.CONTAINING)))
                 .and(buildingSpecification.byCommon(new SearchCriteria(BuildingEntity_.RENT_PRICE, request.getRentPriceFrom(), SearchOperationEnum.GREATER_THAN_EQUAL)))
-                .and(buildingSpecification.byCommon(new SearchCriteria(BuildingEntity_.RENT_PRICE, request.getRentPriceTo(),SearchOperationEnum.LESS_THAN_EQUAL)))
+                .and(buildingSpecification.byCommon(new SearchCriteria(BuildingEntity_.RENT_PRICE, request.getRentPriceTo(), SearchOperationEnum.LESS_THAN_EQUAL)))
                 .and(buildingSpecification.byCommon(new SearchCriteria(BuildingEntity_.MANAGER_NAME, request.getManagerName(), SearchOperationEnum.CONTAINING)))
                 .and(buildingSpecification.byCommon(new SearchCriteria(BuildingEntity_.MANAGER_PHONE, request.getManagerPhone(), SearchOperationEnum.CONTAINING)))
                 .and(buildingSpecification.byBuildingTypes(request.getBuildingTypes()))
@@ -64,7 +64,6 @@ public class BuildingService implements IBuildingService {
                 .and(buildingSpecification.byRentArea(request.getRentAreaFrom(), request.getRentAreaTo()))
                 .and(buildingSpecification.groupBy(BuildingEntity_.ID))
                 .and(buildingSpecification.orderBy(request.getSortColumnName(), request.getSortDirection()));
-
 
 
         Pageable pageable = PageRequest.of(request.getPage() - 1, request.getTotalPageItems());
@@ -114,9 +113,9 @@ public class BuildingService implements IBuildingService {
         newBuildingEntity.setCreatedBy(oldBuildingEntity.getCreatedBy());
         newBuildingEntity.setCreatedDate(oldBuildingEntity.getCreatedDate());
         String fileName = FileUploadUtils.getFileName(buildingDTO.getImage());
-        if(fileName == null){
+        if (fileName == null) {
             newBuildingEntity.setImageUrl(oldBuildingEntity.getImageUrl());
-        }else{
+        } else {
             newBuildingEntity.setImageUrl(fileName);
         }
         BuildingEntity _buildingEntity = buildingRepository.save(newBuildingEntity);
@@ -142,9 +141,9 @@ public class BuildingService implements IBuildingService {
                 .orElseThrow(() -> new NotFoundException(ErrorMessageConstants.BUILDING_NOT_FOUND));
         List<Long> ids = request.getStaffIds();
         Long count = userRepository.countByIdIn(ids);
-        if(count != ids.size()){
+        if (count != ids.size()) {
             throw new NotFoundException(ErrorMessageConstants.USER_NOT_FOUND);
-        }else{
+        } else {
             buildingEntity.getUsers().clear();
             buildingEntity.getUsers().addAll(userRepository.findByIdIn(ids));
         }

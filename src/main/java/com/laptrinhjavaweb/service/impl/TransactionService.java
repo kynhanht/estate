@@ -46,7 +46,7 @@ public class TransactionService implements ITransactionService {
 
                 });
 
-        responses.forEach(response ->{
+        responses.forEach(response -> {
             String code = response.getCode();
             transactionEntities.stream()
                     .filter(transaction -> code.equals(transaction.getCode()))
@@ -55,7 +55,7 @@ public class TransactionService implements ITransactionService {
                         response.getTransactions().add(transactionDTO);
                     });
 
-            });
+        });
 
         return responses;
 

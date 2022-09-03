@@ -79,7 +79,7 @@ public class CustomerService implements ICustomerService {
     @Transactional
     public void deleteCustomers(List<Long> ids) {
         ids.stream().forEach(id -> {
-            CustomerEntity customerEntity =  customerRepository.findById(id)
+            CustomerEntity customerEntity = customerRepository.findById(id)
                     .orElseThrow(() -> new NotFoundException(ErrorMessageConstants.CUSTOMER_NOT_FOUND));
             customerEntity.setStatus(SystemConstants.NO_ACTIVE_STATUS);
             customerRepository.save(customerEntity);
@@ -122,14 +122,14 @@ public class CustomerService implements ICustomerService {
     @Transactional
     public void assignCustomer(AssignmentCustomerRequest request) {
 
-        CustomerEntity customerEntity =  customerRepository.findById(request.getCustomerId())
+        CustomerEntity customerEntity = customerRepository.findById(request.getCustomerId())
                 .orElseThrow(() -> new NotFoundException(ErrorMessageConstants.CUSTOMER_NOT_FOUND));
 
         List<Long> ids = request.getStaffIds();
         Long count = userRepository.countByIdIn(ids);
-        if(count != ids.size()){
+        if (count != ids.size()) {
             throw new NotFoundException(ErrorMessageConstants.USER_NOT_FOUND);
-        }else{
+        } else {
             customerEntity.getUsers().clear();
             customerEntity.getUsers().addAll(userRepository.findByIdIn(ids));
         }

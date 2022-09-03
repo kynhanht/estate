@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@include file="/common/taglib.jsp"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@include file="/common/taglib.jsp" %>
 <%@ page import="com.laptrinhjavaweb.security.utils.SecurityUtils" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -23,7 +23,7 @@
 
                     <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
                         <li>
-                            <a href="/admin/profile-<%=SecurityUtils.getPrincipal().getUsername()%>">
+                            <a href="/admin/profile/<%=SecurityUtils.getPrincipal().getUsername()%>">
                                 <i class="ace-icon fa fa-user"></i>
                                 <%--<spring:message code="label.account.information"/>--%>
                                 Thông tin tài khoản

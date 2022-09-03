@@ -3,7 +3,7 @@ package com.laptrinhjavaweb.dto.request;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BuildingSearchRequest extends PaginationRequest{
+public class BuildingSearchRequest extends PaginationRequest {
 
 
     private String name;

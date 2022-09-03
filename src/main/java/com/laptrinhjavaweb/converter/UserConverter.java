@@ -13,23 +13,23 @@ public class UserConverter {
     @Autowired
     private ModelMapper modelMapper;
 
-    public UserDTO convertToDTO (UserEntity entity){
+    public UserDTO convertToDTO(UserEntity entity) {
         UserDTO result = modelMapper.map(entity, UserDTO.class);
         return result;
     }
 
-    public UserEntity convertToEntity (UserDTO dto){
+    public UserEntity convertToEntity(UserDTO dto) {
         UserEntity result = modelMapper.map(dto, UserEntity.class);
         return result;
     }
 
-    public UserSearchResponse convertToUserSearchResponse(UserEntity userEntity){
+    public UserSearchResponse convertToUserSearchResponse(UserEntity userEntity) {
 
         UserSearchResponse response = modelMapper.map(userEntity, UserSearchResponse.class);
-        if(!userEntity.getRoles().isEmpty()){
+        if (!userEntity.getRoles().isEmpty()) {
             response.setRoleCode(userEntity.getRoles().get(0).getCode());
         }
-        return  response;
+        return response;
     }
 
 }

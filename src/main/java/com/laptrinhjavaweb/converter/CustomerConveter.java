@@ -20,17 +20,17 @@ public class CustomerConveter {
         return customerDTO;
     }
 
-    public CustomerEntity convertToEntity(CustomerDTO customerDTO){
+    public CustomerEntity convertToEntity(CustomerDTO customerDTO) {
 
         CustomerEntity customerEntity = modelMapper.map(customerDTO, CustomerEntity.class);
         return customerEntity;
     }
 
-    public CustomerSearchResponse convertToCustomerSearchResponse(CustomerEntity customerEntity){
+    public CustomerSearchResponse convertToCustomerSearchResponse(CustomerEntity customerEntity) {
 
         CustomerSearchResponse response = modelMapper.map(customerEntity, CustomerSearchResponse.class);
         response.setModifiedDate(DateUtils.convertDateToString(customerEntity.getModifiedDate()));
-        return  response;
+        return response;
     }
-    
+
 }

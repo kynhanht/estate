@@ -2,7 +2,7 @@ package com.laptrinhjavaweb.dto.respone;
 
 import java.io.Serializable;
 
-public class BuildingSearchResponse implements Serializable  {
+public class BuildingSearchResponse implements Serializable {
 
     private Long id;
     private String name;
@@ -11,7 +11,7 @@ public class BuildingSearchResponse implements Serializable  {
     private String managerPhone;
     private Integer numberOfBasement;
     private Double floorArea;
-    private String rentAreaDescription ;
+    private String rentAreaDescription;
     private Double rentPrice;
     private String serviceFee;
     private String brokerageFee;

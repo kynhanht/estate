@@ -26,7 +26,8 @@
             <div class="row">
 
                 <div class="col-xs-12">
-                    <form:form modelAttribute="model" id="formEdit" cssClass="form-horizontal" enctype="multipart/form-data">
+                    <form:form modelAttribute="model" id="formEdit" cssClass="form-horizontal"
+                               enctype="multipart/form-data">
 
                         <div class="form-group">
                             <div class="col-xs-9">
@@ -44,28 +45,28 @@
                             <div class="col-xs-9">
                                 <form:select path="districtCode" cssClass="chosen-select">
                                     <form:option value="">--- Chọn Quận ---</form:option>
-                                    <form:options items="${districts}" />
+                                    <form:options items="${districts}"/>
                                 </form:select>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-xs-3 no-padding-right" for="ward"> Phường </label>
                             <div class="col-xs-9">
-                                <form:input path="ward" cssClass="form-control" />
+                                <form:input path="ward" cssClass="form-control"/>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-xs-3 no-padding-right" for="street"> Đường
                             </label>
                             <div class="col-xs-9">
-                                <form:input path="street" cssClass="form-control" />
+                                <form:input path="street" cssClass="form-control"/>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-xs-3 no-padding-right" for="structure"> Kết Cấu
                             </label>
                             <div class="col-xs-9">
-                                <form:input path="structure" cssClass="form-control" />
+                                <form:input path="structure" cssClass="form-control"/>
                             </div>
                         </div>
                         <div class="form-group">
@@ -88,21 +89,21 @@
                             <label class="col-xs-3 no-padding-right" for="direction"> Hướng
                             </label>
                             <div class="col-xs-9">
-                                <form:input path="direction" cssClass="form-control" />
+                                <form:input path="direction" cssClass="form-control"/>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-xs-3 no-padding-right" for="level"> Hạng
                             </label>
                             <div class="col-xs-9">
-                                <form:input path="level" cssClass="form-control" />
+                                <form:input path="level" cssClass="form-control"/>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-xs-3 no-padding-right" for="rentArea"> Diện tích thuê
                             </label>
                             <div class="col-xs-9">
-                                <form:input path="rentArea" cssClass="form-control" />
+                                <form:input path="rentArea" cssClass="form-control"/>
                             </div>
                         </div>
                         <div class="form-group">
@@ -115,94 +116,95 @@
                         <div class="form-group">
                             <label class="col-xs-3 no-padding-right" for="rentPrice"> Giá thuê </label>
                             <div class="col-xs-9">
-                                <input type="number" name="rentPrice" id="rentPrice" class="form-control" value="${model.rentPrice}"/>
+                                <input type="number" name="rentPrice" id="rentPrice" class="form-control"
+                                       value="${model.rentPrice}"/>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-xs-3 no-padding-right" for="rentPriceDescription"> Mô tả giá </label>
                             <div class="col-xs-9">
-                                <form:input path="rentPriceDescription" cssClass="form-control" />
+                                <form:input path="rentPriceDescription" cssClass="form-control"/>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-xs-3 no-padding-right" for="serviceFee"> Phí dịch vụ</label>
                             <div class="col-xs-9">
-                                <form:input path="serviceFee" cssClass="form-control" />
+                                <form:input path="serviceFee" cssClass="form-control"/>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-xs-3 no-padding-right" for="carFee"> Phí ô tô</label>
                             <div class="col-xs-9">
-                                <form:input path="carFee" cssClass="form-control" />
+                                <form:input path="carFee" cssClass="form-control"/>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-xs-3 no-padding-right" for="motobikeFee"> Phí mô tô</label>
                             <div class="col-xs-9">
-                                <form:input path="motobikeFee" cssClass="form-control" />
+                                <form:input path="motobikeFee" cssClass="form-control"/>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-xs-3 no-padding-right" for="overtimeFee"> Phí ngoài giờ</label>
                             <div class="col-xs-9">
-                                <form:input path="overtimeFee" cssClass="form-control" />
+                                <form:input path="overtimeFee" cssClass="form-control"/>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-xs-3 no-padding-right" for="waterFee"> Tiền nước</label>
                             <div class="col-xs-9">
-                                <form:input path="waterFee" cssClass="form-control" />
+                                <form:input path="waterFee" cssClass="form-control"/>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-xs-3 no-padding-right" for="electricityFee"> Tiền điện</label>
                             <div class="col-xs-9">
-                                <form:input path="electricityFee" cssClass="form-control" />
+                                <form:input path="electricityFee" cssClass="form-control"/>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-xs-3 no-padding-right" for="deposit"> Đặt cọc</label>
                             <div class="col-xs-9">
-                                <form:input path="deposit" cssClass="form-control" />
+                                <form:input path="deposit" cssClass="form-control"/>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-xs-3 no-padding-right" for="payment"> Thanh toán</label>
                             <div class="col-xs-9">
-                                <form:input path="payment" cssClass="form-control" />
+                                <form:input path="payment" cssClass="form-control"/>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-xs-3 no-padding-right" for="rentTime"> Thời gian thuê</label>
                             <div class="col-xs-9">
-                                <form:input path="rentTime" cssClass="form-control" />
+                                <form:input path="rentTime" cssClass="form-control"/>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-xs-3 no-padding-right" for="decorationTime"> Thời gian trang trí</label>
                             <div class="col-xs-9">
-                                <form:input path="decorationTime" cssClass="form-control" />
+                                <form:input path="decorationTime" cssClass="form-control"/>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-xs-3 no-padding-right" for="managerName"> Tên quản lý</label>
                             <div class="col-xs-9">
-                                <form:input path="managerName" cssClass="form-control" />
+                                <form:input path="managerName" cssClass="form-control"/>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-xs-3 no-padding-right" for="managerPhone"> SĐT quản lý</label>
                             <div class="col-xs-9">
-                                <form:input path="managerPhone" cssClass="form-control" />
+                                <form:input path="managerPhone" cssClass="form-control"/>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-xs-3 no-padding-right" for="brokerageFee"> Phí môi giới</label>
                             <div class="col-xs-9">
-                                <form:input path="brokerageFee" cssClass="form-control" />
+                                <form:input path="brokerageFee" cssClass="form-control"/>
                             </div>
                         </div>
 
@@ -229,29 +231,32 @@
                         <div class="form-group">
                             <label class="col-xs-3 no-padding-right" for="linkOfBuilding">Link sản phẩm</label>
                             <div class="col-xs-9">
-                                <form:input path="linkOfBuilding" cssClass="form-control" />
+                                <form:input path="linkOfBuilding" cssClass="form-control"/>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-xs-3 no-padding-right" for="map"> Bản đồ</label>
                             <div class="col-xs-9">
-                                <form:input path="map" cssClass="form-control" />
+                                <form:input path="map" cssClass="form-control"/>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-xs-3 no-padding-right" for="image"> Hình đại diện</label>
                             <div class="col-xs-3">
-                                <form:input path="image" type="file" accept="image/png, image/jpg, image/jpeg" id="image"/>
+                                <form:input path="image" type="file" accept="image/png, image/jpg, image/jpeg"
+                                            id="image"/>
                             </div>
                             <div class="col-xs-6">
                                 <c:choose>
                                     <c:when test="${not empty model.imageUrl}">
-                                        <img id="thumbnail" src="${model.imageUrl}" alt="Logo Preview" width="500px" height="500px">
+                                        <img id="thumbnail" src="${model.imageUrl}" alt="Logo Preview" width="500px"
+                                             height="500px">
                                     </c:when>
                                     <c:otherwise>
-                                        <img id="thumbnail" src="/static/img/default-image.png" alt="Logo Preview" width="500px" height="500px">
+                                        <img id="thumbnail" src="/static/img/default-image.png" alt="Logo Preview"
+                                             width="500px" height="500px">
                                     </c:otherwise>
                                 </c:choose>
                             </div>
@@ -270,7 +275,8 @@
                                 </c:choose>
                                 <input type="button" class="btn btn-md btn-warning"
                                        value="Huỷ" id="cancelBuildingBtn"/>
-                                <img src="/static/img/loading.gif" style="display: none; height: 100px" id="loading_image">
+                                <img src="/static/img/loading.gif" style="display: none; height: 100px"
+                                     id="loading_image">
 
                             </div>
                         </div>
@@ -323,7 +329,7 @@
             createBuilding(formData);
         })
 
-        function createBuilding(formData){
+        function createBuilding(formData) {
             $('#loading_image').show();
             // API
             $.ajax({
@@ -338,7 +344,7 @@
                 success: function (response) {
                     showAlertAfterCreateSuccess(function () {
                         $('#loading_image').hide();
-                        window.location.href = "/admin/building-edit-"+ response.id;
+                        window.location.href = "/admin/building-edit/" + response.id;
                     });
                 },
                 error: function (response) {
@@ -349,6 +355,7 @@
                 }
             });
         }
+
         // Update building
         $("#updateBuildingBtn").click(function (e) {
             e.preventDefault();
@@ -357,12 +364,13 @@
             const id = $("#id").val();
             updateBuilding(id, formData);
         });
-        function updateBuilding(id, formData){
+
+        function updateBuilding(id, formData) {
             $('#loading_image').show();
             // API
             $.ajax({
                 type: "PUT",
-                url: "${buildingAPI}/"+id,
+                url: "${buildingAPI}/" + id,
                 data: formData,
                 dataType: "json",
                 enctype: 'multipart/form-data',
@@ -372,17 +380,18 @@
                 success: function (response) {
                     showAlertAfterUpdateSuccess(function () {
                         $('#loading_image').hide();
-                        window.location.href = "/admin/building-edit-"+ response.id;
+                        window.location.href = "/admin/building-edit/" + response.id;
                     })
                 },
                 error: function (response) {
                     showAlertAfterFail(function () {
                         $('#loading_image').hide();
-                        window.location.href = "/admin/building-edit-"+ id;
+                        window.location.href = "/admin/building-edit/" + id;
                     })
                 }
             });
         }
+
         // Cancel building
         $("#cancelBuildingBtn").click(function () {
             window.location.href = "/admin/building-list"
@@ -395,7 +404,7 @@
         function showImageThumbnail(fileInput) {
             const file = fileInput.files[0];
             const reader = new FileReader();
-            reader.onload = function(e) {
+            reader.onload = function (e) {
                 $('#thumbnail').attr('src', e.target.result);
             }
             reader.readAsDataURL(file);

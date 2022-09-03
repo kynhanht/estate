@@ -108,14 +108,14 @@
                 success: function (res) {
                     showAlertAfterCreateSuccess(function () {
                         $('#loading_image').hide();
-                        window.location.href = "/admin/profile-" + res.userName;
+                        window.location.href = "/admin/profile/" + res.userName;
                     });
                 },
                 error: function (res) {
-                     showAlertAfterFail(function () {
-                         $('#loading_image').hide();
-                         window.location.href = "/admin/profile-" + username;
-                     });
+                    showAlertAfterFail(function () {
+                        $('#loading_image').hide();
+                        window.location.href = "/admin/profile/" + username;
+                    });
                 }
             });
         }

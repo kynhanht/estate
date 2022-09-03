@@ -1,6 +1,6 @@
 package com.laptrinhjavaweb.enums;
 
-public enum  DistrictsEnum {
+public enum DistrictsEnum {
 
     Q1("Quận 1"),
     Q2("Quận 2"),
@@ -16,12 +16,12 @@ public enum  DistrictsEnum {
         return districtValue;
     }
 
-    public static String findDistrictValue(String name){
-        for(DistrictsEnum district: DistrictsEnum.values()){
-            if(district.name().equals(name)){
+    public static String findDistrictValue(String name) {
+        for (DistrictsEnum district : DistrictsEnum.values()) {
+            if (district.name().equals(name)) {
                 return district.getDistrictValue();
             }
         }
-        return  "";
+        return "";
     }
 }

@@ -29,7 +29,7 @@ public class BuildingConverter {
         return entityDTO;
     }
 
-    public BuildingEntity convertToEntity(BuildingDTO buildingDTO){
+    public BuildingEntity convertToEntity(BuildingDTO buildingDTO) {
 
         BuildingEntity buildingEntity = modelMapper.map(buildingDTO, BuildingEntity.class);
         buildingEntity.setBuildingTypes(SystemUtils.convertBuildingTypes(buildingDTO.getBuildingTypes()));
@@ -45,14 +45,14 @@ public class BuildingConverter {
             }
             buildingEntity.setRentAreas(rentAreas);
         }
-        return  buildingEntity;
+        return buildingEntity;
     }
 
-    public BuildingSearchResponse convertToBuildingSearchResponse(BuildingEntity buildingEntity){
+    public BuildingSearchResponse convertToBuildingSearchResponse(BuildingEntity buildingEntity) {
 
-        BuildingSearchResponse response = modelMapper.map(buildingEntity,BuildingSearchResponse.class);
+        BuildingSearchResponse response = modelMapper.map(buildingEntity, BuildingSearchResponse.class);
         response.setAddress(SystemUtils.convertToAddress(buildingEntity.getStreet(), buildingEntity.getWard(), buildingEntity.getDistrictCode()));
-        return  response;
+        return response;
     }
 
 }

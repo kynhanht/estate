@@ -9,11 +9,11 @@ import java.util.List;
 public class RoleEntity extends BaseEntity {
 
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = 6964100224912150073L;
+     *
+     */
+    private static final long serialVersionUID = 6964100224912150073L;
 
-	@Column(nullable = false)
+    @Column(nullable = false)
     private String name;
 
     @Column(unique = true, nullable = false)

@@ -1,8 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="/common/taglib.jsp" %>
-<c:url var="buildingListURL" value="/admin/building-list" />
-<c:url var="buildingAPI" value="/api/building" />
-<c:url var="userAPI" value="/api/user" />
+<c:url var="buildingListURL" value="/admin/building-list"/>
+<c:url var="buildingAPI" value="/api/building"/>
+<c:url var="userAPI" value="/api/user"/>
 <html>
 <head>
     <title>Danh sách toà nhà</title>
@@ -42,7 +42,8 @@
 
                         <div class="widget-body">
                             <div class="widget-main">
-                                <form:form modelAttribute="modelSearch" action="${buildingListURL}" id="listForm" method="GET">
+                                <form:form modelAttribute="modelSearch" action="${buildingListURL}" id="listForm"
+                                           method="GET">
                                     <div class="form-horizontal">
                                         <div class="form-group">
                                             <div class="col-xs-6">
@@ -51,7 +52,8 @@
                                             </div>
                                             <div class="col-xs-6">
                                                 <label for="floorArea">Diện tích sàn</label>
-                                                <input type="number" id="floorArea" name="floorArea" value="${modelSearch.floorArea}" class="form-control">
+                                                <input type="number" id="floorArea" name="floorArea"
+                                                       value="${modelSearch.floorArea}" class="form-control">
                                             </div>
                                         </div>
 
@@ -61,61 +63,66 @@
                                                 <br>
                                                 <form:select path="districtCode" cssClass="chosen-select">
                                                     <form:option value="">--- Chọn quận ---</form:option>
-                                                    <form:options items="${districts}" />
+                                                    <form:options items="${districts}"/>
                                                 </form:select>
                                             </div>
                                             <div class="col-xs-4">
                                                 <label for="ward">Phường</label>
-                                                <form:input path="ward" cssClass="form-control" />
+                                                <form:input path="ward" cssClass="form-control"/>
                                             </div>
                                             <div class="col-xs-4">
                                                 <label for="street">Đường</label>
-                                                <form:input path="street" cssClass="form-control" />
+                                                <form:input path="street" cssClass="form-control"/>
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <div class="col-xs-4">
                                                 <label for="numberOfBasement">Số tầng hầm</label>
-                                                <input type="number" id="numberOfBasement" name="numberOfBasement" value="${modelSearch.numberOfBasement}" class="form-control">
+                                                <input type="number" id="numberOfBasement" name="numberOfBasement"
+                                                       value="${modelSearch.numberOfBasement}" class="form-control">
                                             </div>
                                             <div class="col-xs-4">
                                                 <label for="direction">Hướng</label>
-                                                <form:input path="direction" cssClass="form-control" />
+                                                <form:input path="direction" cssClass="form-control"/>
                                             </div>
                                             <div class="col-xs-4">
                                                 <label for="level">Hạng</label>
-                                                <form:input path="level" cssClass="form-control" />
+                                                <form:input path="level" cssClass="form-control"/>
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <div class="col-xs-3">
                                                 <label for="rentAreaFrom">Diện tích từ</label>
-                                                <input type="number" id="rentAreaFrom" name="rentAreaFrom" value="${modelSearch.rentAreaFrom}" class="form-control">
+                                                <input type="number" id="rentAreaFrom" name="rentAreaFrom"
+                                                       value="${modelSearch.rentAreaFrom}" class="form-control">
                                             </div>
                                             <div class="col-xs-3">
                                                 <label for="rentAreaTo">Diện tích đến</label>
-                                                <input type="number" id="rentAreaTo" name="rentAreaTo" value="${modelSearch.rentAreaTo}" class="form-control">
+                                                <input type="number" id="rentAreaTo" name="rentAreaTo"
+                                                       value="${modelSearch.rentAreaTo}" class="form-control">
                                             </div>
                                             <div class="col-xs-3">
                                                 <label for="rentPriceFrom">Giá thuê từ</label>
-                                                <input type="number" id="rentPriceFrom" name="rentPriceFrom" value="${modelSearch.rentPriceFrom}" class="form-control">
+                                                <input type="number" id="rentPriceFrom" name="rentPriceFrom"
+                                                       value="${modelSearch.rentPriceFrom}" class="form-control">
                                             </div>
                                             <div class="col-xs-3">
                                                 <label for="rentPriceTo">Giá thuê đến</label>
-                                                <input type="number" id="rentPriceTo" name="rentPriceTo" value="${modelSearch.rentPriceTo}" class="form-control">
+                                                <input type="number" id="rentPriceTo" name="rentPriceTo"
+                                                       value="${modelSearch.rentPriceTo}" class="form-control">
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <div class="col-xs-4">
                                                 <label for="managerName">Tên quản lý</label>
-                                                <form:input path="managerName" cssClass="form-control" />
+                                                <form:input path="managerName" cssClass="form-control"/>
                                             </div>
                                             <div class="col-xs-4">
                                                 <label for="managerPhone">Số điện thoại</label>
-                                                <form:input path="managerPhone" cssClass="form-control" />
+                                                <form:input path="managerPhone" cssClass="form-control"/>
                                             </div>
                                             <security:authorize access="hasRole('MANAGER')">
 
@@ -123,8 +130,9 @@
                                                     <label for="staffId">Nhân viên</label>
                                                     <br>
                                                     <form:select path="staffId">
-                                                        <form:option value="">--- Chọn nhân viên phụ trách ---</form:option>
-                                                        <form:options items="${staffs}" />
+                                                        <form:option
+                                                                value="">--- Chọn nhân viên phụ trách ---</form:option>
+                                                        <form:options items="${staffs}"/>
                                                     </form:select>
                                                 </div>
 
@@ -164,11 +172,11 @@
                     <div class="pull-right">
                         <security:authorize access="hasRole('MANAGER')">
                             <a flag="info"
-                            class="btn btn-white btn-info btn-bold"
-                            data-toggle="tooltip"
-                            title="Thêm toà nhà"
-                            href='<c:url value="/admin/building-edit"/>'>
-                            <span><i class="fa fa-plus-circle bigger-110 purple"></i></span>
+                               class="btn btn-white btn-info btn-bold"
+                               data-toggle="tooltip"
+                               title="Thêm toà nhà"
+                               href='<c:url value="/admin/building-edit"/>'>
+                                <span><i class="fa fa-plus-circle bigger-110 purple"></i></span>
                             </a>
                         </security:authorize>
                         <button id="btnDelete" type="button" disabled
@@ -186,8 +194,10 @@
                 <div class="col-xs-12">
                     <div class="table-responsive">
                         <display:table name="${modelResponse.listResult}" cellspacing="0" cellpadding="0"
-                                       requestURI="${buildingListURL}" partialList="true" sort="external" defaultsort="2" defaultorder="ascending"
-                                       id="${modelResponse.tableId}" size="${modelResponse.totalItems}" pagesize="${modelResponse.totalPageItems}"
+                                       requestURI="${buildingListURL}" partialList="true" sort="external"
+                                       defaultsort="2" defaultorder="ascending"
+                                       id="${modelResponse.tableId}" size="${modelResponse.totalItems}"
+                                       pagesize="${modelResponse.totalPageItems}"
                                        export="true"
                                        class="table table-fcv-ace table-striped table-bordered table-hover dataTable no-footer"
                                        style="margin: 3em 0 1.5em;">
@@ -203,13 +213,19 @@
                                            id="checkbox_${tableList.id}" class="check-box-element"/>
                                 </fieldset>
                             </display:column>
-                            <display:column headerClass="text-left" property="name" title="Tên toà nhà" sortName="name" sortable="true"/>
-                            <display:column headerClass="text-left" property="numberOfBasement" title="Số tầng hầm" sortName="numberOfBasement" sortable="true"/>
+                            <display:column headerClass="text-left" property="name" title="Tên toà nhà" sortName="name"
+                                            sortable="true"/>
+                            <display:column headerClass="text-left" property="numberOfBasement" title="Số tầng hầm"
+                                            sortName="numberOfBasement" sortable="true"/>
                             <display:column headerClass="text-left" property="address" title="Địa Chi"/>
-                            <display:column headerClass="text-left" property="managerName" title="Tên quản lý" sortName="managerName" sortable="true"/>
-                            <display:column headerClass="text-left" property="managerPhone" title="Số điện thoại" sortName="managerPhone" sortable="true"/>
-                            <display:column headerClass="text-left" property="floorArea" title="Giá Thuê" sortName="floorArea" sortable="true"/>
-                            <display:column headerClass="text-left" property="rentPrice" title="Phí dịch vụ" sortName="rentPrice" sortable="true"/>
+                            <display:column headerClass="text-left" property="managerName" title="Tên quản lý"
+                                            sortName="managerName" sortable="true"/>
+                            <display:column headerClass="text-left" property="managerPhone" title="Số điện thoại"
+                                            sortName="managerPhone" sortable="true"/>
+                            <display:column headerClass="text-left" property="floorArea" title="Giá Thuê"
+                                            sortName="floorArea" sortable="true"/>
+                            <display:column headerClass="text-left" property="rentPrice" title="Phí dịch vụ"
+                                            sortName="rentPrice" sortable="true"/>
                             <display:column headerClass="col-actions" title="Thao tác" media="html">
                                 <security:authorize access="hasRole('MANAGER')">
                                     <button class="btn btn-xs btn-info" title="Giao toà nhà"
@@ -219,7 +235,7 @@
                                 </security:authorize>
                                 <a class="btn btn-xs btn-info" data-toggle="tooltip"
                                    title="Cập nhật toà nhà"
-                                   href='<c:url value="/admin/building-edit-${tableList.id}"/>'>
+                                   href='<c:url value="/admin/building-edit/${tableList.id}"/>'>
                                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                 </a>
                             </display:column>
@@ -272,6 +288,7 @@
         e.preventDefault();
         $('#listForm').submit();
     });
+
     // Load Modal
     function openAssignBuildingModal(buildingId) {
         // Open modal
@@ -280,20 +297,21 @@
         loadStaffs(buildingId);
         $('#buildingId').val(buildingId);
     };
+
     function loadStaffs(buildingId) {
         $.ajax({
             type: "GET",
-            url: "${buildingAPI}/"+ buildingId +"/staffs",
+            url: "${buildingAPI}/" + buildingId + "/staffs",
             dataType: "json",
             success: function (response) {
                 var row = '';
-               $.each(response, function (index, item) {
-                   row += '<tr>';
-                   row += '<td class="text-center"><input type="checkbox" name="checkList" value='+ item.staffId +' id="checkbox_'+ item.staffId + '" '+ item.checked +' /></td>';
-                   row += '<td class="text-center">'+ item.fullName + '</td>'
-                   row += '</tr>'
-               });
-               $('#staffList tbody').html(row);
+                $.each(response, function (index, item) {
+                    row += '<tr>';
+                    row += '<td class="text-center"><input type="checkbox" name="checkList" value=' + item.staffId + ' id="checkbox_' + item.staffId + '" ' + item.checked + ' /></td>';
+                    row += '<td class="text-center">' + item.fullName + '</td>'
+                    row += '</tr>'
+                });
+                $('#staffList tbody').html(row);
 
             },
             error: function (respone) {
@@ -301,6 +319,7 @@
             }
         });
     }
+
     // Assign building
     $('#assignBuildingBtn').click(function (e) {
         e.preventDefault();
@@ -312,6 +331,7 @@
         data['staffIds'] = staffIds;
         assignBuilding(data);
     });
+
     function assignBuilding(data) {
         $.ajax({
             type: "POST",

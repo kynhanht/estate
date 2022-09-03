@@ -91,14 +91,14 @@
 </div>
 <script>
 
-    function convertData(data){
+    function convertData(data) {
         var formData = $("#formEdit").serializeArray();
         $.each(formData, function (indexInArray, element) {
             data["" + element.name + ""] = element.value;
         });
     }
 
-    $('#createBtn').click(function (event){
+    $('#createBtn').click(function (event) {
         event.preventDefault();
         var data = {};
         convertData(data);
@@ -117,7 +117,7 @@
             success: function (res) {
                 showAlertAfterCreateSuccess(function () {
                     $('#loading_image').hide();
-                    window.location.href = "/admin/user-edit-" + res.id;
+                    window.location.href = "/admin/user-edit/" + res.id;
                 });
             },
             error: function (res) {
@@ -129,7 +129,7 @@
         });
     }
 
-    $('#updateBtn').click(function (event){
+    $('#updateBtn').click(function (event) {
         event.preventDefault();
         var data = {};
         convertData(data);
@@ -147,13 +147,13 @@
             success: function (res) {
                 showAlertAfterUpdateSuccess(function () {
                     $('#loading_image').hide();
-                    window.location.href = "/admin/user-edit-" + res.id;
+                    window.location.href = "/admin/user-edit/" + res.id;
                 });
             },
             error: function (res) {
                 showAlertAfterFail(function () {
                     $('#loading_image').hide();
-                    window.location.href = "/admin/user-edit-" + id;
+                    window.location.href = "/admin/user-edit/" + id;
                 })
             }
         });
@@ -173,13 +173,13 @@
             success: function (res) {
                 showAlertAfterUpdateSuccess(function () {
                     $('#loading_image').hide();
-                    window.location.href = "/admin/user-edit-" + res.id;
+                    window.location.href = "/admin/user-edit/" + res.id;
                 })
             },
             error: function (res) {
                 showAlertAfterFail(function () {
                     $('#loading_image').hide();
-                    window.location.href = "/admin/user-edit-" + id;
+                    window.location.href = "/admin/user-edit/" + id;
                 })
             }
         });

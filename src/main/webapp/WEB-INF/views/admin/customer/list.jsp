@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="/common/taglib.jsp" %>
 <c:url var="customerListURL" value="/admin/customer-list"/>
-<c:url var="customerAPI" value="/api/customer" />
+<c:url var="customerAPI" value="/api/customer"/>
 <html>
 <body>
 <head>
@@ -114,45 +114,53 @@
 
             <div class="row">
                 <div class="col-xs-12">
-                        <div class="table-responsive">
-                            <display:table name="${modelResponse.listResult}" cellspacing="0" cellpadding="0"
-                                           requestURI="${customerListURL}" partialList="true" sort="external" defaultsort="2" defaultorder="ascending"
-                                           id="${modelResponse.tableId}" size="${modelResponse.totalItems}" pagesize="${modelResponse.totalPageItems}"
-                                           export="false"
-                                           class="table table-fcv-ace table-striped table-bordered table-hover dataTable no-footer"
-                                           style="margin: 3em 0 1.5em;">
+                    <div class="table-responsive">
+                        <display:table name="${modelResponse.listResult}" cellspacing="0" cellpadding="0"
+                                       requestURI="${customerListURL}" partialList="true" sort="external"
+                                       defaultsort="2" defaultorder="ascending"
+                                       id="${modelResponse.tableId}" size="${modelResponse.totalItems}"
+                                       pagesize="${modelResponse.totalPageItems}"
+                                       export="false"
+                                       class="table table-fcv-ace table-striped table-bordered table-hover dataTable no-footer"
+                                       style="margin: 3em 0 1.5em;">
 
-                                <display:column title="<fieldset class='form-group'>
+                            <display:column title="<fieldset class='form-group'>
 												        <input type='checkbox' id='checkAll' class='check-box-element'>
 												        </fieldset>" class="center select-cell"
-                                                headerClass="center select-cell">
-                                    <fieldset>
-                                        <input type="checkbox" name="checkList" value="${tableList.id}"
-                                               id="checkbox_${tableList.id}" class="check-box-element"/>
-                                    </fieldset>
-                                </display:column>
-                                <display:column headerClass="text-left" property="fullName" title="Tên" sortName="fullName" sortable="true"/>
-                                <display:column headerClass="text-left" property="phone" title="Số điện thoại" sortName="phone" sortable="true"/>
-                                <display:column headerClass="text-left" property="email" title="Email" sortName="email" sortable="true"/>
-                                <display:column headerClass="text-left" property="demand" title="Nhu cầu" sortName="demand" sortable="true"/>
-                                <display:column headerClass="text-left" property="modifiedBy" title="Người nhập" sortName="modifiedBy" sortable="true"/>
-                                <display:column headerClass="text-left" property="modifiedDate" title="Ngày nhập" sortName="modifiedDate" sortable="true"/>
-                                <display:column headerClass="col-actions" title="Thao tác">
-                                    <security:authorize access="hasRole('MANAGER')">
-                                        <button class="btn btn-xs btn-info" title="Giao khách hàng"
-                                                onclick="openAssignCustomerModal(${tableList.id})">
-                                            <i class="fa fa-bars" aria-hidden="true"></i>
-                                        </button>
-                                    </security:authorize>
-                                    <a class="btn btn-xs btn-info" data-toggle="tooltip"
-                                       title="Cập nhật khách hàng"
-                                       href='<c:url value="/admin/customer-edit-${tableList.id}"/>'>
-                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                    </a>
-                                </display:column>
+                                            headerClass="center select-cell">
+                                <fieldset>
+                                    <input type="checkbox" name="checkList" value="${tableList.id}"
+                                           id="checkbox_${tableList.id}" class="check-box-element"/>
+                                </fieldset>
+                            </display:column>
+                            <display:column headerClass="text-left" property="fullName" title="Tên" sortName="fullName"
+                                            sortable="true"/>
+                            <display:column headerClass="text-left" property="phone" title="Số điện thoại"
+                                            sortName="phone" sortable="true"/>
+                            <display:column headerClass="text-left" property="email" title="Email" sortName="email"
+                                            sortable="true"/>
+                            <display:column headerClass="text-left" property="demand" title="Nhu cầu" sortName="demand"
+                                            sortable="true"/>
+                            <display:column headerClass="text-left" property="modifiedBy" title="Người nhập"
+                                            sortName="modifiedBy" sortable="true"/>
+                            <display:column headerClass="text-left" property="modifiedDate" title="Ngày nhập"
+                                            sortName="modifiedDate" sortable="true"/>
+                            <display:column headerClass="col-actions" title="Thao tác">
+                                <security:authorize access="hasRole('MANAGER')">
+                                    <button class="btn btn-xs btn-info" title="Giao khách hàng"
+                                            onclick="openAssignCustomerModal(${tableList.id})">
+                                        <i class="fa fa-bars" aria-hidden="true"></i>
+                                    </button>
+                                </security:authorize>
+                                <a class="btn btn-xs btn-info" data-toggle="tooltip"
+                                   title="Cập nhật khách hàng"
+                                   href='<c:url value="/admin/customer-edit/${tableList.id}"/>'>
+                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                </a>
+                            </display:column>
 
-                            </display:table>
-                        </div>
+                        </display:table>
+                    </div>
 
                 </div>
             </div>
@@ -211,17 +219,18 @@
         loadStaffs(customerId);
         $('#customerId').val(customerId);
     };
+
     function loadStaffs(customerId) {
         $.ajax({
             type: "GET",
-            url: "${customerAPI}/"+ customerId +"/staffs",
+            url: "${customerAPI}/" + customerId + "/staffs",
             dataType: "json",
             success: function (response) {
                 var row = '';
                 $.each(response, function (index, item) {
                     row += '<tr>';
-                    row += '<td class="text-center"><input type="checkbox" name="checkList" value='+ item.staffId +' id="checkbox_'+ item.staffId + '" '+ item.checked +' /></td>';
-                    row += '<td class="text-center">'+ item.fullName + '</td>'
+                    row += '<td class="text-center"><input type="checkbox" name="checkList" value=' + item.staffId + ' id="checkbox_' + item.staffId + '" ' + item.checked + ' /></td>';
+                    row += '<td class="text-center">' + item.fullName + '</td>'
                     row += '</tr>'
                 });
                 $('#staffList tbody').html(row);
@@ -246,6 +255,7 @@
 
 
     });
+
     function assignCustomer(data) {
         $.ajax({
             type: "POST",

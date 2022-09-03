@@ -41,7 +41,7 @@ public class CustomerSearchBuilder {
         this.status = builder.status;
     }
 
-    public static class Builder{
+    public static class Builder {
 
         private String fullName;
 
@@ -52,7 +52,7 @@ public class CustomerSearchBuilder {
         private Long staffId;
 
         private Integer status;
-        
+
 
         public Builder setFullName(String fullName) {
             this.fullName = fullName;
@@ -79,7 +79,7 @@ public class CustomerSearchBuilder {
             return this;
         }
 
-        public CustomerSearchBuilder build(){
+        public CustomerSearchBuilder build() {
             return new CustomerSearchBuilder(this);
         }
     }

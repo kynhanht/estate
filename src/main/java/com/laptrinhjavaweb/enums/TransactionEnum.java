@@ -1,6 +1,6 @@
 package com.laptrinhjavaweb.enums;
 
-public enum  TransactionEnum {
+public enum TransactionEnum {
 
     TRANSACTION_1("Quá trình CSKH"),
     TRANSACTION_2("Dẫn khách đi xem"),
@@ -16,12 +16,12 @@ public enum  TransactionEnum {
         return transactionValue;
     }
 
-    public static String findTransactionValue(String name){
-        for(TransactionEnum transaction: TransactionEnum.values()){
-            if(transaction.name().equals(name)){
+    public static String findTransactionValue(String name) {
+        for (TransactionEnum transaction : TransactionEnum.values()) {
+            if (transaction.name().equals(name)) {
                 return transaction.getTransactionValue();
             }
         }
-        return  "";
+        return "";
     }
 }

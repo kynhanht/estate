@@ -58,7 +58,7 @@ public class UserService implements IUserService {
         Specification<UserEntity> specification = Specification
                 .where(userSpecification.byCommon(new SearchCriteria(UserEntity_.STATUS, SystemConstants.ACTIVE_STATUS, SearchOperationEnum.EQUAL)))
                 .and(userSpecification.byCommon(new SearchCriteria(UserEntity_.FULL_NAME, request.getName(), SearchOperationEnum.CONTAINING))
-                .or(userSpecification.byCommon(new SearchCriteria(UserEntity_.USER_NAME, request.getName(), SearchOperationEnum.CONTAINING))))
+                        .or(userSpecification.byCommon(new SearchCriteria(UserEntity_.USER_NAME, request.getName(), SearchOperationEnum.CONTAINING))))
                 .and(userSpecification.orderBy(request.getSortColumnName(), request.getSortDirection()));
         Pageable pageable = PageRequest.of(request.getPage() - 1, request.getTotalPageItems());
         Page<UserEntity> page = userRepository.findAll(specification, pageable);
@@ -126,7 +126,7 @@ public class UserService implements IUserService {
 
     @Override
     @Transactional
-    public void updatePassword(Long id, PasswordRequest passwordRequest){
+    public void updatePassword(Long id, PasswordRequest passwordRequest) {
         UserEntity user = userRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException(ErrorMessageConstants.USER_NOT_FOUND));
         if (passwordEncoder.matches(passwordRequest.getOldPassword(), user.getPassword())
@@ -198,7 +198,7 @@ public class UserService implements IUserService {
                             .map(building -> building.getId())
                             .collect(Collectors.toList());
                     // Check List of buildingId contain request building
-                    if(buildingIds.contains(buildingId)) staffRespone.setChecked("checked");
+                    if (buildingIds.contains(buildingId)) staffRespone.setChecked("checked");
                     return staffRespone;
                 }
         ).collect(Collectors.toList());
@@ -221,7 +221,7 @@ public class UserService implements IUserService {
                             .map(customer -> customer.getId())
                             .collect(Collectors.toList());
                     // Check List of customerId contain request customerId
-                    if(customerIds.contains(customerId)) staffRespone.setChecked("checked");
+                    if (customerIds.contains(customerId)) staffRespone.setChecked("checked");
                     return staffRespone;
                 }
         ).collect(Collectors.toList());

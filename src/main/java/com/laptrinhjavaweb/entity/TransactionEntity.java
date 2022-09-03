@@ -4,17 +4,17 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "transactions")
-public class TransactionEntity extends  BaseEntity {
+public class TransactionEntity extends BaseEntity {
 
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = 9211022828115142019L;
+     *
+     */
+    private static final long serialVersionUID = 9211022828115142019L;
 
-	@Column(name = "code", nullable = false)
+    @Column(name = "code", nullable = false)
     private String code;
 
-    @Column(name = "note",columnDefinition = "TEXT")
+    @Column(name = "note", columnDefinition = "TEXT")
     private String note;
 
     @ManyToOne(fetch = FetchType.LAZY)

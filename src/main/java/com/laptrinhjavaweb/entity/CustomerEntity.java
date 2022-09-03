@@ -10,13 +10,12 @@ import java.util.List;
 public class CustomerEntity extends BaseEntity {
 
 
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
-	@Column(name = "full_name")
+    @Column(name = "full_name")
     private String fullName;
 
     @Column(name = "phone")
@@ -35,7 +34,7 @@ public class CustomerEntity extends BaseEntity {
     private String note;
 
     @Column(name = "status")
-    private  Integer status;
+    private Integer status;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "assignment_customer",
@@ -45,7 +44,6 @@ public class CustomerEntity extends BaseEntity {
 
     @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE}, orphanRemoval = true)
     private List<TransactionEntity> transactions = new ArrayList<>();
-
 
 
     public String getFullName() {
@@ -105,14 +103,14 @@ public class CustomerEntity extends BaseEntity {
     }
 
     public List<UserEntity> getUsers() {
-		return users;
-	}
+        return users;
+    }
 
-	public void setUsers(List<UserEntity> users) {
-		this.users = users;
-	}
+    public void setUsers(List<UserEntity> users) {
+        this.users = users;
+    }
 
-	public List<TransactionEntity> getTransactions() {
+    public List<TransactionEntity> getTransactions() {
         return transactions;
     }
 

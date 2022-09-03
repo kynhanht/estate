@@ -56,7 +56,7 @@ public class BuildingController {
         return mav;
     }
 
-    @RequestMapping(value = "/admin/building-edit-{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/building-edit/{id}", method = RequestMethod.GET)
     public ModelAndView updateBuilding(@PathVariable("id") Long id) {
         ModelAndView mav = new ModelAndView("admin/building/edit");
         mav.addObject(SystemConstants.MODEL, buildingService.getBuildingById(id));
@@ -64,7 +64,6 @@ public class BuildingController {
         mav.addObject(SystemConstants.MODEL_BUILDING_TYPES, SystemUtils.getBuildingTypes());
         return mav;
     }
-
 
 
 }

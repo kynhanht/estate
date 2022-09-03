@@ -47,14 +47,14 @@ public class UserController {
         return mav;
     }
 
-    @RequestMapping(value = "/admin/profile-{username}", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/profile/{username}", method = RequestMethod.GET)
     public ModelAndView updateProfile(@PathVariable("username") String username, HttpServletRequest request) {
         ModelAndView mav = new ModelAndView("admin/user/profile");
         mav.addObject(SystemConstants.MODEL, userService.findOneByUserName(username));
         return mav;
     }
 
-    @RequestMapping(value = "/admin/user-edit-{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/user-edit/{id}", method = RequestMethod.GET)
     public ModelAndView updateUser(@PathVariable("id") Long id, HttpServletRequest request) {
         ModelAndView mav = new ModelAndView("admin/user/edit");
         mav.addObject(SystemConstants.MODEL, userService.findUserById(id));

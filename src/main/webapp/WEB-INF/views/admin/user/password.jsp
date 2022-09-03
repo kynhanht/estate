@@ -31,8 +31,8 @@
                             <div class="space-4"></div>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label no-padding-right">
-                                    <%--<spring:message code="label.password.old"/>--%>
-                                        Mật khẩu cũ
+                                        <%--<spring:message code="label.password.old"/>--%>
+                                    Mật khẩu cũ
                                 </label>
                                 <div class="col-sm-9">
                                     <input type="password" class="form-control" id="oldPassword" name="oldPassword"/>
@@ -41,8 +41,8 @@
                             <div class="space-4"></div>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label no-padding-right">
-                                    <%--<spring:message code="label.password.new"/>--%>
-                                        Mật khẩu mới
+                                        <%--<spring:message code="label.password.new"/>--%>
+                                    Mật khẩu mới
                                 </label>
                                 <div class="col-sm-9">
                                     <input type="password" class="form-control" id="newPassword" name="newPassword"/>
@@ -51,18 +51,21 @@
                             <div class="space-4"></div>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label no-padding-right">
-                                    <%--<spring:message code="label.password.repeat"/>--%>
-                                        Nhập lại mật khẩu mới
+                                        <%--<spring:message code="label.password.repeat"/>--%>
+                                    Nhập lại mật khẩu mới
                                 </label>
                                 <div class="col-sm-9">
-                                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword"/>
+                                    <input type="password" class="form-control" id="confirmPassword"
+                                           name="confirmPassword"/>
                                 </div>
                             </div>
                             <!--Btn-->
                             <div class="col-sm-12">
                                 <label class="col-sm-3 control-label no-padding-right message-info"></label>
-                                <input type="button" class="btn btn-white btn-warning btn-bold" value="Đổi mật khẩu" id="changePasswordBtn"/>
-                                <img src="/static/img/loading.gif" style="display: none; height: 100px" id="loading_image">
+                                <input type="button" class="btn btn-white btn-warning btn-bold" value="Đổi mật khẩu"
+                                       id="changePasswordBtn"/>
+                                <img src="/static/img/loading.gif" style="display: none; height: 100px"
+                                     id="loading_image">
                             </div>
                             <!--Btn-->
                             <input type="hidden" value="${model.id}" id="userId"/>
@@ -80,7 +83,7 @@
                 $('#formChangePassword').submit();
             });
         });
-        $(function() {
+        $(function () {
             $("form[name='formChangePassword']").validate({
                 rules: {
                     oldPassword: "required",
@@ -98,7 +101,7 @@
                     },
                     confirmPassword: "Không bỏ trống"
                 },
-                submitHandler: function(form) {
+                submitHandler: function (form) {
                     var formData = $('#formChangePassword').serializeArray();
                     var dataArray = {};
                     $.each(formData, function (i, v) {
@@ -111,15 +114,15 @@
 
         function changePassword(data, id) {
             $.ajax({
-                url: '${changePasswordURL}/'+id,
+                url: '${changePasswordURL}/' + id,
                 type: 'PUT',
                 contentType: 'application/json',
                 data: JSON.stringify(data),
                 success: function (res) {
-                   showAlertAfterUpdateSuccess(function () {
-                       $('#loading_image').hide();
-                       window.location.href = "/admin/profile-password";
-                   });
+                    showAlertAfterUpdateSuccess(function () {
+                        $('#loading_image').hide();
+                        window.location.href = "/admin/profile-password";
+                    });
                 },
                 error: function (res) {
                     showAlertAfterFail(function () {

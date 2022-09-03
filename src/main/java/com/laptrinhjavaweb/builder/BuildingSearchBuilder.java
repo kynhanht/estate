@@ -105,7 +105,7 @@ public class BuildingSearchBuilder {
         this.buildingTypes = builder.buildingTypes;
     }
 
-    public static class Builder{
+    public static class Builder {
 
         private String name;
         private Double floorArea;
@@ -201,10 +201,10 @@ public class BuildingSearchBuilder {
 
         public Builder setBuildingTypes(List<String> buildingTypes) {
             this.buildingTypes = buildingTypes;
-            return  this;
+            return this;
         }
 
-        public BuildingSearchBuilder build(){
+        public BuildingSearchBuilder build() {
             return new BuildingSearchBuilder(this);
         }
     }

@@ -57,5 +57,4 @@ public final class BuildingSpecification extends GenericSpecification<BuildingEn
     }
 
 
-
 }

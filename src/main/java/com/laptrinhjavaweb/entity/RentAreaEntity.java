@@ -7,11 +7,11 @@ import javax.persistence.*;
 public class RentAreaEntity extends BaseEntity {
 
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = -8036234703494593625L;
+     *
+     */
+    private static final long serialVersionUID = -8036234703494593625L;
 
-	@Column(name = "value")
+    @Column(name = "value")
     private Double value;
 
     @ManyToOne(fetch = FetchType.LAZY)

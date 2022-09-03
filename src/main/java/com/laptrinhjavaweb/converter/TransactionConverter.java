@@ -8,14 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class TransactionConverter  {
+public class TransactionConverter {
 
     @Autowired
     private ModelMapper modelMapper;
 
-    public TransactionDTO convertToDTO(TransactionEntity transactionEntity){
+    public TransactionDTO convertToDTO(TransactionEntity transactionEntity) {
         TransactionDTO transactionDTO = modelMapper.map(transactionEntity, TransactionDTO.class);
         transactionDTO.setCreatedBy(DateUtils.convertFullDateToString(transactionEntity.getCreatedDate()));
-        return  transactionDTO;
+        return transactionDTO;
     }
 }

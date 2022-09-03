@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,700" rel="stylesheet">
 
     <!-- Custom stlylesheet -->
-    <link type="text/css" rel="stylesheet" href="/static/error/css/error-404.css" />
+    <link type="text/css" rel="stylesheet" href="/static/error/css/error-404.css"/>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -29,7 +29,8 @@
         <div class="notfound-404"></div>
         <h1>404</h1>
         <h2>Oops! Page Not Be Found</h2>
-        <p>Sorry but the page you are looking for does not exist, have been removed. name changed or is temporarily unavailable</p>
+        <p>Sorry but the page you are looking for does not exist, have been removed. name changed or is temporarily
+            unavailable</p>
         <a href="/login">Back to homepage</a>
     </div>
 </div>
