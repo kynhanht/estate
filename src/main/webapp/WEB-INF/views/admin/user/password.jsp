@@ -18,7 +18,7 @@
             <ul class="breadcrumb">
                 <li>
                     <i class="ace-icon fa fa-home home-icon"></i>
-                    <a href="#">Trang chủ</a>
+                    <a href='<c:url value="/admin/home" />'>Home</a>
                 </li>
                 <li class="active">Đổi mật khẩu</li>
             </ul><!-- /.breadcrumb -->
@@ -62,7 +62,7 @@
                             <div class="col-sm-12">
                                 <label class="col-sm-3 control-label no-padding-right message-info"></label>
                                 <input type="button" class="btn btn-white btn-warning btn-bold" value="Đổi mật khẩu" id="changePasswordBtn"/>
-                                <img src="/img/loading.gif" style="display: none; height: 100px" id="loading_image">
+                                <img src="/static/img/loading.gif" style="display: none; height: 100px" id="loading_image">
                             </div>
                             <!--Btn-->
                             <input type="hidden" value="${model.id}" id="userId"/>

@@ -6,13 +6,13 @@
     <%--<meta name="viewport" content="width=device-width, initial-scale=1">--%>
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-    <title>Error</title>
+    <title>500 Server Error</title>
 
     <!-- Google font -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,700" rel="stylesheet">
 
     <!-- Custom stlylesheet -->
-    <link type="text/css" rel="stylesheet" href="/static/error/css/error.css" />
+    <link type="text/css" rel="stylesheet" href="/static/error/css/error-500.css" />
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -24,12 +24,12 @@
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <body>
 
-<div id="error">
-    <div class="error">
-        <div class="error-common"></div>
-        <h1>Error</h1>
-        <h2>Oops! there was an error.</h2>
-        <p>We apologize for that. Please refresh the page and try again.</p>
+<div id="server-error">
+    <div class="server-error">
+        <div class="server-error-500"></div>
+        <h1>500 Server Error</h1>
+        <h2>Oops! Something went wrong.</h2>
+        <p>Try to Refresh this page or feel to contact us if the problem persists</p>
         <a href="/login">Back to homepage</a>
     </div>
 </div>

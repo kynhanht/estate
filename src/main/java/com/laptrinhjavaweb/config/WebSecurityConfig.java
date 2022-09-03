@@ -52,7 +52,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin/building-edit").hasRole("MANAGER")
                 .antMatchers("/admin/customer-edit").hasRole("MANAGER")
                 .antMatchers("/admin/**").hasAnyRole("MANAGER", "STAFF")
-                .antMatchers("/login/**", "/web/**", "/errors", "/home").permitAll()
+                .antMatchers("/error", "/home", "/static/**","/login").permitAll()
                 .anyRequest().authenticated();
         // Configure remember me
         http.rememberMe()

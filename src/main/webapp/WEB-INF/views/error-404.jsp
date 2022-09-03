@@ -6,13 +6,13 @@
     <%--<meta name="viewport" content="width=device-width, initial-scale=1">--%>
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-    <title>Error</title>
+    <title>404 Not Found</title>
 
     <!-- Google font -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,700" rel="stylesheet">
 
     <!-- Custom stlylesheet -->
-    <link type="text/css" rel="stylesheet" href="/static/error/css/error.css" />
+    <link type="text/css" rel="stylesheet" href="/static/error/css/error-404.css" />
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -24,12 +24,12 @@
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <body>
 
-<div id="error">
-    <div class="error">
-        <div class="error-common"></div>
-        <h1>Error</h1>
-        <h2>Oops! there was an error.</h2>
-        <p>We apologize for that. Please refresh the page and try again.</p>
+<div id="notfound">
+    <div class="notfound">
+        <div class="notfound-404"></div>
+        <h1>404</h1>
+        <h2>Oops! Page Not Be Found</h2>
+        <p>Sorry but the page you are looking for does not exist, have been removed. name changed or is temporarily unavailable</p>
         <a href="/login">Back to homepage</a>
     </div>
 </div>

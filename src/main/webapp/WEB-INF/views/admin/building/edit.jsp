@@ -251,7 +251,7 @@
                                         <img id="thumbnail" src="${model.imageUrl}" alt="Logo Preview" width="500px" height="500px">
                                     </c:when>
                                     <c:otherwise>
-                                        <img id="thumbnail" src="/img/default-image.png" alt="Logo Preview" width="500px" height="500px">
+                                        <img id="thumbnail" src="/static/img/default-image.png" alt="Logo Preview" width="500px" height="500px">
                                     </c:otherwise>
                                 </c:choose>
                             </div>
@@ -270,7 +270,7 @@
                                 </c:choose>
                                 <input type="button" class="btn btn-md btn-warning"
                                        value="Huỷ" id="cancelBuildingBtn"/>
-                                <img src="/img/loading.gif" style="display: none; height: 100px" id="loading_image">
+                                <img src="/static/img/loading.gif" style="display: none; height: 100px" id="loading_image">
 
                             </div>
                         </div>

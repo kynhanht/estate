@@ -17,7 +17,7 @@
             <ul class="breadcrumb">
                 <li>
                     <i class="ace-icon fa fa-home home-icon"></i>
-                    <a href="#">Trang chủ</a>
+                    <a href='<c:url value="/admin/home" />'>Home</a>
                 </li>
                 <li class="active">Chỉnh sửa người dùng</li>
             </ul><!-- /.breadcrumb -->
@@ -79,7 +79,7 @@
                                            value="Thêm mới người dùng" id="createBtn"/>
                                 </c:otherwise>
                             </c:choose>
-                            <img src="/img/loading.gif" style="display: none; height: 100px" id="loading_image">
+                            <img src="/static/img/loading.gif" style="display: none; height: 100px" id="loading_image">
                         </div>
                         <!--Btn-->
                         </form:form>

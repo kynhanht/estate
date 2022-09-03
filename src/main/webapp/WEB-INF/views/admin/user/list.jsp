@@ -28,10 +28,7 @@
             <ul class="breadcrumb">
                 <li>
                     <i class="ace-icon fa fa-home home-icon"></i>
-                    <a href="<c:url value="/admin/home"/>">
-                        <%--<spring:message code="label.home"/>--%>
-                        Trang chủ
-                    </a>
+                    <a href="<c:url value="/admin/home"/>">Home</a>
                 </li>
                 <li class="active">
                     <%--<spring:message code="label.user.list"/>--%>

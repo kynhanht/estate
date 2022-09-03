@@ -83,7 +83,7 @@
                                 </c:choose>
                                 <input type="button" class="btn btn-md btn-warning"
                                        value="Huỷ" id="cancelCustomerBtn"/>
-                                <img src="/img/loading.gif" style="display: none; height: 100px" id="loading_image">
+                                <img src="/static/img/loading.gif" style="display: none; height: 100px" id="loading_image">
                             </div>
                         </div>
                     </form:form>

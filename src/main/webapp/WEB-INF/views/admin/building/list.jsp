@@ -6,6 +6,7 @@
 <html>
 <head>
     <title>Danh sách toà nhà</title>
+    <meta charset="utf-8">
 </head>
 <div class="main-content">
 

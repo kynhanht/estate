@@ -2,6 +2,8 @@ package com.laptrinhjavaweb.controller.web;
 
 import com.laptrinhjavaweb.constant.SystemConstants;
 import com.laptrinhjavaweb.security.utils.SecurityUtils;
+import org.springframework.boot.web.servlet.error.ErrorController;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -10,10 +12,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @Controller(value = "homeControllerOfWeb")
-public class HomeController {
+public class HomeController implements ErrorController{
 
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public ModelAndView homePage() {
@@ -29,11 +32,23 @@ public class HomeController {
 		return mav;
 	}
 
-	@RequestMapping(value = "/errors", method = RequestMethod.GET)
-	public ModelAndView errorPage() {
-		ModelAndView mav = new ModelAndView("error");
-		return mav;
+	// Customize Whitelabel Error Page
+	@RequestMapping(value = "/error", method = RequestMethod.GET)
+	public ModelAndView errorPage(HttpServletResponse response) {
+
+		String target = "";
+		int status = response.getStatus();
+		if ( status == HttpStatus.NOT_FOUND.value()) {
+			target = "error-404";
+		} else if (status == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
+			target = "error-500";
+		}else{
+			target = "error";
+		}
+		ModelAndView mav = new ModelAndView(target);
+		return new ModelAndView(target);
 	}
+
 
 	private String determineTarget(HttpServletRequest request, Authentication authentication) {
 		String target = "";
@@ -57,5 +72,7 @@ public class HomeController {
 		}
 		return target;
 	}
+
+
 
 }
