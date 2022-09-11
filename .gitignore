@@ -1,6 +1,5 @@
 .settings
 target
-!target/estate-1.0.war
 *.classpath
 *.project
 .idea
