@@ -3,6 +3,8 @@ package com.laptrinhjavaweb.utils;
 import com.laptrinhjavaweb.constant.ErrorMessageConstants;
 import com.laptrinhjavaweb.constant.SystemConstants;
 import com.laptrinhjavaweb.exception.FileUploadException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -11,9 +13,14 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.nio.file.attribute.PosixFilePermission;
+import java.nio.file.attribute.PosixFilePermissions;
+import java.nio.file.attribute.UserPrincipal;
+import java.util.Set;
 
 public class FileUploadUtils {
 
+    private static final Logger logger = LoggerFactory.getLogger(FileUploadUtils.class);
 
     public static void uploadFile(MultipartFile file) {
 
@@ -35,13 +42,14 @@ public class FileUploadUtils {
             Path fileLocation = directoryLocation.resolve(fileName);
             Files.copy(file.getInputStream(), fileLocation, StandardCopyOption.REPLACE_EXISTING);
             // Optional(In linux): Set permission for file when it is uploaded
-//            Set<PosixFilePermission> perms = PosixFilePermissions.fromString("rwxrwxrwx");
-//            Files.setPosixFilePermissions(fileLocation, perms);
+            Set<PosixFilePermission> perms = PosixFilePermissions.fromString("rwxrwxrwx");
+            Files.setPosixFilePermissions(fileLocation, perms);
             //Optional(In linux): Set owner for file when it is uploaded
 //            UserPrincipal owner = fileLocation.getFileSystem().getUserPrincipalLookupService()
 //                    .lookupPrincipalByName("kynhanht");
 //            Files.setOwner(fileLocation, owner);
         } catch (IOException e) {
+            logger.error(e.getMessage());
             throw new FileUploadException(ErrorMessageConstants.COULD_NOT_UPLOAD_FILE + fileName, e);
         }
     }
@@ -51,7 +59,7 @@ public class FileUploadUtils {
         if (org.apache.commons.lang.StringUtils.isBlank(fileName)) {
             return null;
         }
-        Path filePath = Paths.get(SystemConstants.UPLOAD_BUILDING_FILE_DIR).resolve(fileName).normalize();
+        Path filePath = Paths.get(SystemConstants.LOAD_FILE_DIR).resolve(fileName).normalize();
         return filePath.toString();
     }
 

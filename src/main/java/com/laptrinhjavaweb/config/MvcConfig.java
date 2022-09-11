@@ -16,6 +16,11 @@ public class MvcConfig implements WebMvcConfigurer {
 
         Path buildingUploadDir = Paths.get(SystemConstants.UPLOAD_BUILDING_FILE_DIR);
         String buildingUploadPath = buildingUploadDir.toFile().getAbsolutePath();
-        registry.addResourceHandler("/images/building/**").addResourceLocations("file:/" + buildingUploadPath + "/");
+        System.out.println(buildingUploadPath);
+        /* For Window */
+//        registry.addResourceHandler(SystemConstants.LOAD_FILE_DIR + "**").addResourceLocations("file:/" + buildingUploadPath + "/");
+        /* For Linux */
+        registry.addResourceHandler(SystemConstants.LOAD_FILE_DIR + "**").addResourceLocations("file://" + buildingUploadPath + "/");
+
     }
 }
