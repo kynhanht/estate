@@ -1,0 +1,104 @@
+version: "3"
+
+# NETWORKS
+networks:
+  estate-network:
+
+# VOLUMES
+volumes:
+  certbot-etc:
+  certbot-var:
+  web-root:
+  db:
+    driver_opts:
+      device: /home/kynhanht/db/
+      type: none
+      o: bind
+  store-data:
+    driver_opts:
+      device: /home/kynhanht/data/
+      type: none
+      o: bind
+
+services:
+
+  # MYSQL
+  mysql-db:
+    image: mysql:8.0.13
+    container_name: c-mysql
+    restart: unless-stopped
+    ports:
+      - "3306:3306"
+    volumes:
+      - db:/var/lib/mysql
+    user: "mysql"
+    networks:
+      - estate-network
+    environment:
+      MYSQL_ROOT_HOST: '%'
+      MYSQL_ROOT_PASSWORD: Nhan@123456
+      MYSQL_USER: kynhanht
+      MYSQL_PASSWORD: Nhan@123456
+      MYSQL_DATABASE: estate
+    cap_add:
+      - SYS_NICE  # CAP_SYS_NICE
+
+  # SPRING APP
+  spring-app:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: c-spring-app
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    volumes:
+      - store-data:/home/kynhanht/
+    networks:
+      - estate-network
+    environment:
+      WAIT_HOSTS: c-mysql:3306
+      WAIT_HOSTS_TIMEOUT: 300
+      WAIT_SLEEP_INTERVAL: 30
+      WAIT_HOST_CONNECT_TIMEOUT: 30
+    depends_on:
+      - mysql-db
+
+  # NGINX SERVER
+  nginx-server:
+    image: nginx:1.23.1
+    container_name: c-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/conf:/etc/nginx/conf.d
+      - certbot-etc:/etc/letsencrypt
+      - certbot-var:/var/lib/letsencrypt
+      - web-root:/var/www/html
+    depends_on:
+      - spring-app
+    networks:
+      - estate-network
+
+  # Certbot
+  certbot:
+    image: certbot/certbot
+    container_name: c-certbot
+    volumes:
+      - certbot-etc:/etc/letsencrypt
+      - certbot-var:/var/lib/letsencrypt
+      - web-root:/var/www/html
+    networks:
+       - estate-network
+    depends_on:
+      - nginx-server
+    command: certonly --webroot -w /var/www/html --force-renewal --email kynhanht@gmail.com -d building-estate.online -d www.building-estate.online  --agree-tos
+
+
+
+
+
+
+
