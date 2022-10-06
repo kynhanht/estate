@@ -31,7 +31,6 @@ services:
       - "3306:3306"
     volumes:
       - db:/var/lib/mysql
-    user: "mysql"
     networks:
       - estate-network
     environment:
@@ -77,10 +76,10 @@ services:
       - certbot-etc:/etc/letsencrypt
       - certbot-var:/var/lib/letsencrypt
       - web-root:/var/www/html
-    depends_on:
-      - spring-app
     networks:
       - estate-network
+    depends_on:
+      - spring-app
 
   # Certbot
   certbot:
