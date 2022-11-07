@@ -8,59 +8,19 @@ networks:
 
 # VOLUMES
 volumes:
-
-#  nginx-conf:
-#    driver: local
-#    name: nginx-conf
-#    driver_opts:
-#      type: cifs
-#      device: //10.1.0.5/data/nginx/conf
-#      o: "username=kynhanht,password=kynhan123ht,file_mode=0777,dir_mode=0777"
-#
-#  certbot-var:
-#    driver: local
-#    name: certbot-var
-#    driver_opts:
-#      type: cifs
-#      device: //10.1.0.5/data/certbot/var
-#      o: "username=kynhanht,password=kynhan123ht,file_mode=0777,dir_mode=0777"
-#
-#  certbot-etc:
-#    driver: local
-#    name: certbot-etc
-#    driver_opts:
-#      type: cifs
-#      device: //10.1.0.5/data/certbot/etc
-#      o: "username=kynhanht,password=kynhan123ht,file_mode=0777,dir_mode=0777"
-#
-#  web-root:
-#    driver: local
-#    name: web-root
-#    driver_opts:
-#      type: cifs
-#      device: //10.1.0.5/data/web-root
-#      o: "username=kynhanht,password=kynhan123ht,file_mode=0777,dir_mode=0777"
-#
-#  upload:
-#    driver: local
-#    name: upload
-#    driver_opts:
-#      type: cifs
-#      device: //10.1.0.5/data/upload
-#      o: "username=kynhanht,password=kynhan123ht,file_mode=0777,dir_mode=0777"
   data:
     driver: local
     name: data
     driver_opts:
       type: cifs
-      device: //10.1.0.5/data/
-      o: "username=kynhanht,password=kynhan123ht,file_mode=0777,dir_mode=0777,vers=3.0,rw"
-
+      device: //192.168.142.196/data/
+      o: "username=kynhanht,password=kynhan123ht,file_mode=0777,dir_mode=0777,vers=1.0"
+      # Test mount volume: mount -t cifs -o user=kynhanht,password=kynhan123ht //192.168.142.196/data  /data
+      # Test samba: smbclient //192.168.142.196/data -U kynhanht
 services:
-
   # SAMBA
   samba:
-    image: kynhanht/samba
+    image: kynhanht/samba #dperson/samba
     ports:
       - 139:139
       - 145:145
@@ -75,113 +35,43 @@ services:
       replicas: 3
       placement:
         constraints:
-          - node.role==manager
-
+        - node.role==manager
   # MYSQL
-#  mysql-db:
-#    image: mysql:8.0.13
-#    ports:
-#      - 3306:3306
-#    deploy:
-#      replicas: 3
-##      resourses:
-##        limits:
-##          cpus: '0.5'
-##          memory: 150MB
-##        reservations:
-##          cpus: '0.25'
-##          memory: 50MB
-#      restart_policy:
-#        condition: on-failure
-#    volumes:
-#      - data:/var/lib/mysql
-#    networks:
-#      - estate-network
-#    environment:
-#      MYSQL_ROOT_HOST: '%'
-#      MYSQL_ROOT_PASSWORD: Nhan@123456
-#      MYSQL_USER: kynhanht
-#      MYSQL_PASSWORD: Nhan@123456
-#      MYSQL_DATABASE: estate
-#    cap_add:
-#      - SYS_NICE  # CAP_SYS_NICE
-
-  # SPRING APP
-#  spring-app:
-#    image: kynhanht_spring-app:latest
-#    ports:
-#      - 8080:8080
-#    deploy:
-#      replicas: 3
-#      restart_policy:
-#        condition: on-failure
-#    volumes:
-#      - data/upload:/home/kynhanht
-#    networks:
-#      - estate-network
-#    environment:
-#      WAIT_HOSTS: c-mysql:3306
-#      WAIT_HOSTS_TIMEOUT: 300
-#      WAIT_SLEEP_INTERVAL: 30
-#      WAIT_HOST_CONNECT_TIMEOUT: 30
-#    depends_on:
-#      - mysql-db
-
-  # NGINX SERVER
-#  nginx-server:
-#    image: nginx:1.23.1
-#    ports:
-#      - 80:80
-#      - 443:443
-#    deploy:
-#      replicas: 3
-#      restart_policy:
-#        condition: on-failure
-#    volumes:
-#      - data:/etc/nginx/conf.d
-##      - data/certbot/etc:/etc/letsencrypt
-##      - data/certbot/var:/var/lib/letsencrypt
-##      - data/certbot/webroot:/var/www/html
-##    depends_on:
-##      - spring-app
-#    networks:
-#      - estate-network
-
-  dotnet:
-    image: ichte/swarmtest:dotnet
+  mysql-db:
+    image: mysql:8.0.13
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.role==manager
     ports:
-      - 8085:8085
+      - 3306:3306
+    volumes:
+      - /home/estate/db:/var/lib/mysql
+    networks:
+      - estate-network
+    environment:
+      MYSQL_ROOT_HOST: '%'
+      MYSQL_ROOT_PASSWORD: Nhan@123456
+      MYSQL_USER: kynhanht
+      MYSQL_PASSWORD: Nhan@123456
+      MYSQL_DATABASE: estate
+    cap_add:
+      - SYS_NICE  # CAP_SYS_NICE
+  # NGINX SERVER
+  nginx-server:
+    image: nginx:1.23.1
+    ports:
+      - 80:80
+      - 443:443
     deploy:
       replicas: 3
       restart_policy:
         condition: on-failure
     volumes:
-      - data:/test/
-    #      - data/certbot/etc:/etc/letsencrypt
-    #      - data/certbot/var:/var/lib/letsencrypt
-    #      - data/certbot/webroot:/var/www/html
-    #    depends_on:
-    #      - spring-app
+      - data:/etc/nginx/conf.d
     networks:
       - estate-network
-
-  # Certbot
-#  certbot:
-#    image: certbot/certbot
-#    deploy:
-#      replicas: 1
-#      restart_policy:
-#        condition: on-failure
-#    volumes:
-#      - data/certbot/etc:/etc/letsencrypt
-#      - data/certbot/var:/var/lib/letsencrypt
-#      - data/certbot/web-root:/var/www/html
-#    networks:
-#      - estate-network
-#    depends_on:
-#      - nginx-server
-#    command: certonly --webroot -w /var/www/html --force-renewal --email kynhanht@gmail.com -d building-estate.online -d www.building-estate.online  --agree-tos
-
 
 
 
